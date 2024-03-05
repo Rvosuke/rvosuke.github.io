@@ -68,7 +68,7 @@
     
 </div>
     <div id="footer">
-    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2023 WorstOne. All Rights Reserved.</div>
+    <div><span class='face'></span></div><div>【淡泊名利<span><i class='iconfont icon-like-fill'></i></span>宁静致远】</div><div>&copy; 2023-2024 Rvosuke. All Rights Reserved.</div>
 </div>
     <div id="sidebar">
     <div class="menu-wrap" style="display:none;">
@@ -76,19 +76,19 @@
             <div class="menu-notice">
                 <span class="iconfont icon-notice"></span>
                 <div class="notice">
-                    <span>简单地活着，肆意而又精彩！</span>
+                    <span>Stay Fool Stay Cool</span>
                 </div>
             </div>
         
         <nav class="menu">
             <div class="menu-introduce"> 
                 <div class="introduce-avatar">
-                    <img src="/image/sidebar/avatar.jpg">
+                    <img src="/image/sidebar/myself.jpg">
                 </div> 
                 <div class="introduce-info"> 
                     <div class="introduce-user">
                         
-                            <a href="https://worstone.cn" target="_blank"><span>Live For Code</span></a>
+                            <a href="https://baizey.rvosuke.com" target="_blank"><span>白泽阳（Rvosuke）</span></a>
                         
                     </div>
                 </div> 
@@ -96,25 +96,15 @@
             <div class="menu-list">
                 <ul>
                     
-                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>Home</a></li>
                     
-                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                        <li class=""><a href="/Experience" class="" target="_self"><span class="iconfont icon-folder-fill"></span>Experience</a></li>
                     
                         <li class=" active "><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
                         <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
-                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
-                    
-                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
-                    
-                        <li class=""><a href="/atom.xml" class="" target="_blank"><span class="iconfont icon-rss"></span>订阅</a></li>
-                    
                         <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
-                    
-                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
-                    
-                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
                     
                 </ul> 
             </div> 
@@ -123,15 +113,15 @@
                     <div class="image-box"></div>
                 </div>
                 
-                    <a name="知乎" href="https://zhihu.com/people/worstone-29" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
+                    <a name="知乎" href="https://www.zhihu.com/people/rvosuke" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
                 
-                    <a name="微博" href="https://weibo.com/u/5749847477" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
+                    <a name="微博" href="https://blog.csdn.net/qq_62862258" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
                 
-                    <a name="QQ" href="javascript:;" class="image" target="_self" data="/image/sidebar/qq.png"><span class="iconfont icon-qq"></span></a>
+                    <a name="QQ" href="javascript:;" class="image" target="_self" data="/image/sidebar/qq.jpg"><span class="iconfont icon-qq"></span></a>
                 
-                    <a name="微信" href="javascript:;" class="" target="_self" data=""><span class="iconfont icon-wechat"></span></a>
+                    <a name="微信" href="javascript:;" class="image" target="_self" data="/image/sidebar/we.jpg"><span class="iconfont icon-wechat"></span></a>
                 
-                    <a name="GitHub" href="https://github.com/first19326" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                    <a name="GitHub" href="https://github.com/Rvosuke" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
                 
             </div> 
         </nav>
@@ -171,13 +161,89 @@
     <div id="tools">
     <div class="progressbar-top"></div>
     
+    <div class="aplayer"></div>
     <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
     <script type="text/javascript" src="/js/APlayer.min.js"></script>
-    <script type="text/javascript" src="/js/Meting.min.js"></script>
-    <script>
-        var meting_api = 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&auth=:auth&r=:r';
+    <script type="text/javascript">
+        const aplayer = new APlayer({
+            container: document.querySelector(".aplayer"),
+            fixed: true,
+            autoplay: true,
+            loop: "all",
+            order: "random",
+            preload: "auto",
+            volume: 0.4,
+            mutex: true,
+            lrcType: 3,
+            audio: [
+                
+                    {
+                        name: "Edo",
+                        artist: "iwamizu",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/Edo.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "戀歌",
+                        artist: "iwamizu",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/戀歌.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "Missing You",
+                        artist: "Jami Soul",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/Missing You.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "She (feat_ Mr_ Bang, 시나에)",
+                        artist: "Jami Soul _ Mr_ Bang _ 시나에",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/She.mp3",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "The Truth That You Leave_hires",
+                        artist: "Pianoboy高至豪",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/The Truth That You Leave_hires.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "Phone Kisses",
+                        artist: "suhmeduh",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/Phone Kisses.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "sand dream",
+                        artist: "Revo (レヴォ) _ 梶浦由记 (かじうら ゆき)",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/sand dream.flac",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name: "メインテーマ",
+                        artist: "西木康智",
+                        cover: "/music/cover/Endless Tears.jpg",
+                        url: "/music/song/メインテーマ.mp3",
+                        lrc: "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        });
     </script>
-    <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
 
     <div class="wrap-right">
     <div class="wrap-right-hide">
@@ -239,17 +305,17 @@
 </div>
     <script>
     window.config = {
-        GitHubUserName     : "first19326",
-        GitHubRepositories : "Hexo-LiveForCode",
+        GitHubUserName     : "Rvosuke",
+        GitHubRepositories : "rvosuke.github.io",
 
-        User             : "Live For Code",
-        UserAvatar       : "/image/sidebar/avatar.jpg",
-        WebsiteStartDate : "2020-01-01",
-        Home             : "https://worstone.cn",
+        User             : "白泽阳（Rvosuke）",
+        UserAvatar       : "/image/sidebar/myself.jpg",
+        WebsiteStartDate : "2024-01-01",
+        Home             : "https://baizey.rvosuke.com",
 
-        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
+        WebsiteTitleBlur         : "Bai Zeyang",
         WebsiteTitleBlurTimeOut  : 500,
-        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocus        : "Welcome Back",
         WebsiteTitleFocusTimeOut : 1000,
         WebsiteFavicon           : {
             light : "/image/website/logo/logo.png",
@@ -310,12 +376,10 @@
 
         HomeHeaderImage : [
             
-                "/image/header/home.jpg",
-            
-                "/image/header/home.jpeg",
+                "/image/header/slight.jpg",
             
         ],
-        HomeBannerText  : "",
+        HomeBannerText  : "Everything should be made as simple as possible, but no simpler.",
 
         ArticleHeaderImage : [
             
@@ -323,7 +387,7 @@
             
         ],
 
-        OtherBannerText : "",
+        OtherBannerText : "The future is independent of the past given the present.",
 
         Error : {
             icon    : "icon-swimming",
@@ -349,13 +413,13 @@
 
         MenuNotice : {
             enable : true,
-            notice : "简单地活着，肆意而又精彩！",
+            notice : "Stay Fool Stay Cool",
             speed  : 20
         },
         MenuList : [
             
                 {
-                    name   : "首页",
+                    name   : "Home",
                     icon   : "icon-home-fill",
                     href   : "/",
                     type   : "index",
@@ -364,10 +428,10 @@
                 },
             
                 {
-                    name   : "分类",
+                    name   : "Experience",
                     icon   : "icon-folder-fill",
-                    href   : "/category",
-                    type   : "category",
+                    href   : "/Experience",
+                    type   : "Experience",
                     class  : "",
                     target : "_self"
                 },
@@ -391,56 +455,11 @@
                 },
             
                 {
-                    name   : "赞赏",
-                    icon   : "icon-heart-fill",
-                    href   : "/donate",
-                    type   : "donate",
-                    class  : "",
-                    target : "_self"
-                },
-            
-                {
-                    name   : "关于",
-                    icon   : "icon-about-fill",
-                    href   : "/about",
-                    type   : "about",
-                    class  : "",
-                    target : "_self"
-                },
-            
-                {
-                    name   : "订阅",
-                    icon   : "icon-rss",
-                    href   : "/atom.xml",
-                    type   : "",
-                    class  : "",
-                    target : "_blank"
-                },
-            
-                {
                     name   : "搜索",
                     icon   : "icon-search-menu",
                     href   : "javascript:;",
                     type   : "",
                     class  : "search",
-                    target : "_self"
-                },
-            
-                {
-                    name   : "留言板",
-                    icon   : "icon-comments-fill",
-                    href   : "/comment",
-                    type   : "comment",
-                    class  : "",
-                    target : "_self"
-                },
-            
-                {
-                    name   : "友情链接",
-                    icon   : "icon-link",
-                    href   : "/friend",
-                    type   : "friend",
-                    class  : "",
                     target : "_self"
                 },
             
@@ -451,7 +470,7 @@
                     {
                         name   : "知乎",
                         icon   : "icon-zhihu",
-                        href   : "https://zhihu.com/people/worstone-29",
+                        href   : "https://www.zhihu.com/people/rvosuke",
                         class  : "",
                         target : "_blank",
                         image  : ""
@@ -460,7 +479,7 @@
                     {
                         name   : "微博",
                         icon   : "icon-weibo",
-                        href   : "https://weibo.com/u/5749847477",
+                        href   : "https://blog.csdn.net/qq_62862258",
                         class  : "",
                         target : "_blank",
                         image  : ""
@@ -472,22 +491,22 @@
                         href   : "javascript:;",
                         class  : "image",
                         target : "_self",
-                        image  : "/image/sidebar/qq.png"
+                        image  : "/image/sidebar/qq.jpg"
                     },
                 
                     {
                         name   : "微信",
                         icon   : "icon-wechat",
                         href   : "javascript:;",
-                        class  : "",
+                        class  : "image",
                         target : "_self",
-                        image  : ""
+                        image  : "/image/sidebar/we.jpg"
                     },
                 
                     {
                         name   : "GitHub",
                         icon   : "icon-github",
-                        href   : "https://github.com/first19326",
+                        href   : "https://github.com/Rvosuke",
                         class  : "",
                         target : "_blank",
                         image  : ""
@@ -497,7 +516,7 @@
         ],
 
         FooterStyle : 2,
-        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2023 WorstOne. All Rights Reserved.</div>",
+        BottomText  : "<div><span class='face'></span></div><div>【淡泊名利<span><i class='iconfont icon-like-fill'></i></span>宁静致远】</div><div>&copy; 2023-2024 Rvosuke. All Rights Reserved.</div>",
 
         ConsoleList : [
             
@@ -618,25 +637,81 @@
         },
 
         Music : {
-            type : "Meting"
+            type : "APlayer"
         },
         APlayer : {
             container : ".aplayer",
             fixed     : true,
-            autoplay  : false,
+            autoplay  : true,
             loop      : "all",
             order     : "random",
             preload   : "auto",
-            volume    : 0.67,
+            volume    : 0.4,
             mutex     : true,
             lrcType   : 3,
             audio     : [
                 
                     {
-                        name   : "Endless Tears",
-                        artist : "CLIFF EDGE",
+                        name   : "Edo",
+                        artist : "iwamizu",
                         cover  : "/music/cover/Endless Tears.jpg",
-                        url    : "/music/song/Endless Tears.mp3",
+                        url    : "/music/song/Edo.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "戀歌",
+                        artist : "iwamizu",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/戀歌.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "Missing You",
+                        artist : "Jami Soul",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Missing You.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "She (feat_ Mr_ Bang, 시나에)",
+                        artist : "Jami Soul _ Mr_ Bang _ 시나에",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/She.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "The Truth That You Leave_hires",
+                        artist : "Pianoboy高至豪",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/The Truth That You Leave_hires.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "Phone Kisses",
+                        artist : "suhmeduh",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Phone Kisses.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "sand dream",
+                        artist : "Revo (レヴォ) _ 梶浦由记 (かじうら ゆき)",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/sand dream.flac",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+                    {
+                        name   : "メインテーマ",
+                        artist : "西木康智",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/メインテーマ.mp3",
                         lrc    : "/music/lrc/Endless Tears.lrc"
                     },
                 
@@ -649,7 +724,7 @@
             server   : "netease", 
             type     : "playlist", 
             fixed    : true, 
-            autoplay : false, 
+            autoplay : true, 
             loop     : "all", 
             order    : "random", 
             preload  : "auto", 
@@ -720,12 +795,12 @@
         },
 
         Suffix : {
-            about : "简单地活着, 肆意又精彩."
+            about : "Friday"
         },
             
         Theme : {
-            url  : "https://github.com/first19326/Hexo-LiveForCode",
-            name : "Hexo - Live For Code"
+            url  : "https://github.com/Rvosuke",
+            name : "Rvosuke"
         }  
     };
 </script>
