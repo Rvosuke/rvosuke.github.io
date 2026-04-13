@@ -94,9 +94,27 @@ function detectDefaultLang() {
   return browserLang.startsWith("zh") ? "zh" : "en";
 }
 
+function safeGetLang() {
+  try {
+    const stored = localStorage.getItem("lang");
+    if (stored === "zh" || stored === "en") return stored;
+  } catch (_) {
+    // localStorage unavailable (e.g. private-browsing restrictions)
+  }
+  return null;
+}
+
+function safeSetLang(lang) {
+  try {
+    localStorage.setItem("lang", lang);
+  } catch (_) {
+    // localStorage unavailable; preference will not persist
+  }
+}
+
 function resolveLang() {
-  const stored = localStorage.getItem("lang");
-  if (stored === "zh" || stored === "en") return stored;
+  const stored = safeGetLang();
+  if (stored) return stored;
 
   const fromUrl = getLangFromUrl();
   if (fromUrl) return fromUrl;
@@ -162,7 +180,8 @@ function initLanguage() {
   document.querySelectorAll("[data-lang]").forEach((button) => {
     button.addEventListener("click", () => {
       const lang = button.getAttribute("data-lang");
-      localStorage.setItem("lang", lang);
+      if (lang !== "en" && lang !== "zh") return;
+      safeSetLang(lang);
       setLanguage(lang);
     });
   });
