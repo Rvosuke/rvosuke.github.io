@@ -2,80 +2,66 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Rvosuke</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-color: #f4f4f4;
-			color: #333;
-			text-align: center;
-		}
-
-		header {
-			background-color: #333;
-			color: white;
-			padding: 20px;
-		}
-
-		header h1 {
-			margin: 0;
-		}
-
-		section {
-			padding: 20px;
-			margin: 10px;
-			background-color: white;
-			border-radius: 8px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-		}
-
-		footer {
-			padding: 10px;
-			background-color: #333;
-			color: white;
-			margin-top: 20px;
-		}
-
-		a {
-			color: #0077cc;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Bai Zeyang (Rvosuke) academic homepage.">
+  <title>Bai Zeyang | Academic Homepage</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-	<header>
-		<h1>Rvosuke</h1>
-		<p>Graduate Student | AI Researcher | Computer Vision Enthusiast</p>
-	</header>
+  <div class="page">
+    <header class="hero" id="hero">
+      <div class="hero-text">
+        <h1 id="name"></h1>
+        <p id="tagline"></p>
+      </div>
+      <div class="lang-controls" aria-label="Language switcher">
+        <button type="button" data-lang="en" id="lang-en">EN</button>
+        <button type="button" data-lang="zh" id="lang-zh">中文</button>
+      </div>
+    </header>
 
-	<section>
-		<h2>About Me</h2>
-		<p>Hello! I am Bai Zeyang (白泽阳, Rvosuke), a graduate student at the Chinese Academy of Sciences. My research
-			focuses
-			on Artificial Intelligence, specifically in the fields of 3D Gaussian Splatting, Computer Vision, and
-			AI-driven models. I aim to contribute high-quality research to top-tier AI conferences.</p>
-	</section>
+    <main class="content-grid">
+      <section class="card" id="about-section">
+        <h2 id="about-title"></h2>
+        <p id="about-text"></p>
+      </section>
 
-	<section>
-		<h2>Contact</h2>
-		<p>Feel free to reach out to me at:</p>
-		<p>Email: <a href="mailto:zeyangbai.rvo@gmail.com.com">zeyangbai.rvo@gmail.com</a></p>
-		<p>GitHub: <a href="https://github.com/Rvosuke">github.com/Rvosuke</a></p>
-	</section>
+      <section class="card" id="interests-section">
+        <h2 id="interests-title"></h2>
+        <ul id="interests-list"></ul>
+      </section>
 
-	<footer>
-		<p>© 2025 Rvosuke. All rights reserved.</p>
-	</footer>
+      <section class="card" id="publications-section">
+        <h2 id="publications-title"></h2>
+        <ul id="publications-list"></ul>
+      </section>
+
+      <section class="card" id="projects-section">
+        <h2 id="projects-title"></h2>
+        <ul id="projects-list"></ul>
+      </section>
+
+      <section class="card" id="education-section">
+        <h2 id="education-title"></h2>
+        <ul id="education-list"></ul>
+      </section>
+
+      <section class="card" id="contact-section">
+        <h2 id="contact-title"></h2>
+        <p id="contact-message"></p>
+        <ul id="contact-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="footer-text"></p>
+    </footer>
+  </div>
+
+  <script src="content.js"></script>
 </body>
 
 </html>
