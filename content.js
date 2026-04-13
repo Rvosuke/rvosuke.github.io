@@ -119,7 +119,11 @@ function renderContacts(items) {
   ul.innerHTML = "";
   items.forEach((item) => {
     const li = document.createElement("li");
-    li.innerHTML = `${item.label}: <a href="${item.href}">${item.text}</a>`;
+    const link = document.createElement("a");
+    li.appendChild(document.createTextNode(`${item.label}: `));
+    link.setAttribute("href", item.href);
+    link.textContent = item.text;
+    li.appendChild(link);
     ul.appendChild(li);
   });
 }
