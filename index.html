@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Bai Zeyang (Rvosuke) academic homepage.">
   <title>Bai Zeyang | Academic Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="page">
-    <header class="hero" id="hero">
-      <div class="hero-text">
-        <h1 id="name"></h1>
-        <p id="tagline"></p>
+  <div class="page-container">
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <div class="profile-card animate-on-scroll">
+          <div class="profile-photo-wrapper">
+            <img src="./assets/证件照.png" alt="Profile Photo" class="profile-photo" onerror="this.style.display='none'">
+          </div>
+          <h1 id="name" class="name-title"></h1>
+          <img src="./assets/白泽阳-签名.png" alt="Signature" class="signature-img" onerror="this.style.display='none'">
+          <p id="tagline" class="tagline"></p>
+        </div>
+
+        <div class="contact-section animate-on-scroll" style="animation-delay: 0.1s">
+          <p id="contact-message" class="contact-msg hidden"></p>
+          <div id="contact-list" class="contact-list"></div>
+        </div>
+
+        <div class="lang-controls animate-on-scroll" role="group" aria-label="Language switcher" style="animation-delay: 0.2s">
+          <button type="button" data-lang="en" id="lang-en" class="lang-btn">EN</button>
+          <button type="button" data-lang="zh" id="lang-zh" class="lang-btn">中文</button>
+        </div>
       </div>
-      <div class="lang-controls" role="group" aria-label="Language switcher">
-        <button type="button" data-lang="en" id="lang-en">EN</button>
-        <button type="button" data-lang="zh" id="lang-zh">中文</button>
-      </div>
-    </header>
+    </aside>
 
-    <main class="content-grid">
-      <section class="card" id="about-section">
-        <h2 id="about-title"></h2>
-        <p id="about-text"></p>
+    <main class="content">
+      <section class="section animate-on-scroll" id="about-section">
+        <h2 id="about-title" class="section-title"></h2>
+        <p id="about-text" class="section-text"></p>
       </section>
 
-      <section class="card" id="interests-section">
-        <h2 id="interests-title"></h2>
-        <ul id="interests-list"></ul>
+      <section class="section animate-on-scroll" id="interests-section">
+        <h2 id="interests-title" class="section-title"></h2>
+        <ul id="interests-list" class="styled-list"></ul>
       </section>
 
-      <section class="card" id="publications-section">
-        <h2 id="publications-title"></h2>
-        <ul id="publications-list"></ul>
+      <section class="section animate-on-scroll" id="publications-section">
+        <h2 id="publications-title" class="section-title"></h2>
+        <ul id="publications-list" class="styled-list boxed-list" style="gap: 24px;"></ul>
       </section>
 
-      <section class="card" id="projects-section">
-        <h2 id="projects-title"></h2>
-        <ul id="projects-list"></ul>
+      <section class="section animate-on-scroll" id="projects-section">
+        <h2 id="projects-title" class="section-title"></h2>
+        <ul id="projects-list" class="styled-list highlight-list"></ul>
       </section>
 
-      <section class="card" id="education-section">
-        <h2 id="education-title"></h2>
-        <ul id="education-list"></ul>
+      <section class="section animate-on-scroll" id="education-section">
+        <h2 id="education-title" class="section-title"></h2>
+        <ul id="education-list" class="styled-list"></ul>
       </section>
 
-      <section class="card" id="contact-section">
-        <h2 id="contact-title"></h2>
-        <p id="contact-message"></p>
-        <ul id="contact-list"></ul>
-      </section>
+      <footer class="footer animate-on-scroll">
+        <p id="footer-text"></p>
+      </footer>
     </main>
-
-    <footer class="footer">
-      <p id="footer-text"></p>
-    </footer>
   </div>
-
   <script src="content.js"></script>
 </body>
-
 </html>
