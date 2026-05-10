@@ -5,7 +5,7 @@ const content = {
     tagline: "M.Eng. Student at UCAS | 3D Vision, Controllable Generation, AI4Sci",
     aboutTitle: "About Me",
     aboutText:
-      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am also a research intern at the Hong Kong University of Science and Technology (HKUST), working with Prof. Fangneng Zhan. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting, controllable 3D generation, and AI for Science (AI4Sci).",
+      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am also a research intern at the Massachusetts Institute of Technology (MIT), working with Prof. Fangneng Zhan. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting, controllable 3D generation, and AI for Science (AI4Sci).",
     interestsTitle: "Research Interests",
     interests: [
       "Sparse-View 3D Gaussian Splatting & Neural Rendering",
@@ -26,7 +26,7 @@ const content = {
     ],
     projectsTitle: "Other Projects",
     projects: [
-      "<strong>HKUST Research Internship (2026.03–Present):</strong> Engaged in part-level dynamic neural reconstruction research expanding the SAM3D framework.",
+      "<strong>Object-level Streaming 3D Reconstruction</strong> (MIT Research Internship, 2026.03–Present): Engaged in streaming 3D reconstruction research, focusing on algorithm expansion in complex dynamic scenes.",
       "<strong>Missing Modality Glaucoma Diagnosis (2023–2024):</strong> Formulated 'Freeze-Missing-VF', an assistance system handling structrual data missing scenarios for early disease screening."
     ],
     educationTitle: "Education",
@@ -48,7 +48,7 @@ const content = {
     tagline: "中国科学院大学硕士生 | 三维视觉、可控生成、AI for Science",
     aboutTitle: "关于我",
     aboutText:
-      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我正在香港科技大学（HKUST）随占方能教授（Prof. Fangneng Zhan）开展科研实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）、基于扩散模型的可控三维生成，以及 AI for Science (AI4Sci)。",
+      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我正在麻省理工学院（MIT）随占方能教授（Prof. Fangneng Zhan）开展科研实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）、基于扩散模型的可控三维生成，以及 AI for Science (AI4Sci)。",
     interestsTitle: "研究兴趣",
     interests: [
       "稀疏视角 3D Gaussian Splatting 与神经渲染",
@@ -69,7 +69,7 @@ const content = {
     ],
     projectsTitle: "其他项目",
     projects: [
-      "<strong>基于SAM3D的部件级重建</strong>（香港科技大学 科研实习，2026.03–至今）：参与流式三维重建的远程合作研究，侧重于复杂动态场景下的SAM3D算法扩展。",
+      "<strong>目标级流式三维重建</strong>（麻省理工学院 (MIT) 科研实习，2026.03–至今）：参与流式三维重建的远程合作研究，侧重于复杂动态场景下的算法扩展。",
       "<strong>缺失模态青光眼智能辅助</strong>（重点研发计划分项，2023–2024）：开发了针对数据缺失环境下的辅助诊疗预备模型（Freeze-Missing-VF）。"
     ],
     educationTitle: "教育经历",
@@ -95,7 +95,7 @@ function resolveLang() {
   try {
     const stored = localStorage.getItem("lang");
     if (stored === "zh" || stored === "en") return stored;
-  } catch (e) {}
+  } catch (e) { }
 
   const browserLang = (navigator.language || "en").toLowerCase();
   return browserLang.startsWith("zh") ? "zh" : "en";
@@ -104,7 +104,7 @@ function resolveLang() {
 function safeSetLang(lang) {
   try {
     localStorage.setItem("lang", lang);
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function renderList(id, items) {
@@ -141,7 +141,7 @@ function setLanguage(lang) {
     "interests-title", "publications-title", "projects-title",
     "education-title", "contact-message", "footer-text"
   ];
-  
+
   textIds.forEach(id => {
     const el = document.getElementById(id);
     if (el && data[id.replace(/-([a-z])/g, (g) => g[1].toUpperCase())]) {
@@ -157,8 +157,8 @@ function setLanguage(lang) {
 
   const langEnBtn = document.getElementById("lang-en");
   const langZhBtn = document.getElementById("lang-zh");
-  if(langEnBtn) langEnBtn.classList.toggle("active", lang === "en");
-  if(langZhBtn) langZhBtn.classList.toggle("active", lang === "zh");
+  if (langEnBtn) langEnBtn.classList.toggle("active", lang === "en");
+  if (langZhBtn) langZhBtn.classList.toggle("active", lang === "zh");
 }
 
 function setupScrollAnimations() {
@@ -167,7 +167,7 @@ function setupScrollAnimations() {
     rootMargin: '0px',
     threshold: 0.1
   };
-  
+
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (lang !== "en" && lang !== "zh") return;
       safeSetLang(lang);
       setLanguage(lang);
-      
+
       // Re-trigger animations softly on language change
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         el.classList.remove('visible');
