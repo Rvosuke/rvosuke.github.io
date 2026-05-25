@@ -5,7 +5,7 @@ const content = {
     tagline: "M.Eng. Student at UCAS | 3D Vision, Controllable Generation, AI4Sci",
     aboutTitle: "About Me",
     aboutText:
-      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am also a research intern at the Massachusetts Institute of Technology (MIT), working with Prof. Fangneng Zhan. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting, controllable 3D generation, and AI for Science (AI4Sci).",
+      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am a research intern at the Hong Kong University of Science and Technology (HKUST) advised by <a href='https://fnzhan.com/' target='_blank'>Prof. Fangneng Zhan</a>, and also a research intern at the Massachusetts Institute of Technology (MIT) working with <a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting, controllable 3D generation, and AI for Science (AI4Sci).",
     interestsTitle: "Research Interests",
     interests: [
       "Sparse-View 3D Gaussian Splatting & Neural Rendering",
@@ -48,7 +48,7 @@ const content = {
     tagline: "中国科学院大学硕士生 | 三维视觉、可控生成、AI for Science",
     aboutTitle: "关于我",
     aboutText:
-      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我正在麻省理工学院（MIT）随占方能教授（Prof. Fangneng Zhan）开展科研实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）、基于扩散模型的可控三维生成，以及 AI for Science (AI4Sci)。",
+      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我在香港科技大学（HKUST）随<a href='https://fnzhan.com/' target='_blank'>占方能教授（Prof. Fangneng Zhan）</a>开展科研实习，并在麻省理工学院（MIT）与<a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>合作开展实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）、基于扩散模型的可控三维生成，以及 AI for Science (AI4Sci)。",
     interestsTitle: "研究兴趣",
     interests: [
       "稀疏视角 3D Gaussian Splatting 与神经渲染",
