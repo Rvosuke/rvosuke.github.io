@@ -1,33 +1,35 @@
 const content = {
   en: {
     pageTitle: "Bai Zeyang | Academic Homepage",
-    name: "Bai Zeyang",
-    tagline: "M.Eng. Student at UCAS | 3D Vision, Controllable Generation, AI4Sci",
+    name: "Zeyang Bai",
+    tagline: "M.Eng. Student at UCAS",
     aboutTitle: "About Me",
     aboutText:
-      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am a research intern at the Hong Kong University of Science and Technology (HKUST) advised by <a href='https://fnzhan.com/' target='_blank'>Prof. Fangneng Zhan</a>, and also a research intern at the Massachusetts Institute of Technology (MIT) working with <a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting, controllable 3D generation, and AI for Science (AI4Sci).",
+      "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. Currently, I am a research intern at the Hong Kong University of Science and Technology (HKUST) advised by <a href='https://fnzhan.com/' target='_blank'>Prof. Fangneng Zhan</a>, and also a research intern at the Massachusetts Institute of Technology (MIT) working with <a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>. Prior to this, I received my B.Eng. in Artificial Intelligence from Central South University (CSU). My research primarily focuses on sparse-view 3D Gaussian Splatting and controllable 3D generation. <!-- and AI for Science (AI4Sci). -->",
     interestsTitle: "Research Interests",
     interests: [
-      "Sparse-View 3D Gaussian Splatting & Neural Rendering",
-      "Diffusion-Based 3D Scene Generation & Editing",
-      "AI for Science (AI4Sci) & Trustworthy AI"
+      "3D Reconstruction & Generation",
+      "World Model & Spatial Intelligence",
+      "Computer Vision"
     ],
     publicationsTitle: "Publications",
     publications: [
-      "<strong>Seeing the Unseen: Gaussians Diffusion for Sparse-View 3D Generalization</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Wang, Y., Xiao, J.</em><br>ECCV 2026 (Under review) — First Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a semantic-conditioned diffusion repair framework for feed-forward 3DGS under sparse views, solving unseen region modeling and improving scene extrapolation PSNR by 2.5dB while maintaining real-time rendering.</span>",
+      "<strong>Stream3D: Sequential Multi-View 3D Generation via Evidential Memory</strong><br><em>Kaichen Zhou, <strong>Bai, Z.</strong>, Xinhai Chang, Mengyu Wang, Paul Liang, Fangneng Zhan</em><br>CVPRW 2026 (E2E3D) — Co-first Author (Student First Author)<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Proposed a training-free streaming mechanism that upgrades a frozen view-conditioned 3D generator with evidential memory for long-sequence, temporally consistent 3D generation.</span><br><div style='margin-top: 6px;'><a href='https://stream-3d.github.io/stream3d.github.io/' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Project Page]</a> <a href='https://arxiv.org/abs/2605.21472' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Arxiv]</a></div>",
 
-      "<strong>PartGo: Training-Free Localized 3D Part Editing with Constrained Flow</strong><br><em>Niu, H., Meng, L., <strong>Bai, Z.</strong>, Wang, Y., Xiao, J.</em><br>ECCV 2026 (Under review)<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a terminal-flow-guided 3D part editing framework decoupling semantic localization and geometric deformation for zero-shot editing.</span>",
+      "<strong>GraphSplat: Sparse-View Generalizable 3D Gaussian Splatting is Worth Graph of Nodes</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Yu, D., Xiao, J., Liu, L.</em><br>ACM Multimedia 2025 <strong>Oral</strong> — First Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Proposed modeling pixels as graph nodes fusing cross-view and single-view priors to combat depth degradation and view matching failures in sparse-view 3DGS.</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/GraphSplat' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://dl.acm.org/doi/10.1145/3746027.3755481' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Paper]</a></div>",
 
-      "<strong>GraphSplat: Sparse-View Generalizable 3D Gaussian Splatting is Worth Graph of Nodes</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Yu, D., Xiao, J., Liu, L.</em><br>ACM Multimedia 2025 (Oral) — First Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Proposed modeling pixels as graph nodes fusing cross-view and single-view priors to combat depth degradation and view matching failures in sparse-view 3DGS.</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/GraphSplat' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://arxiv.org/' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Paper]</a></div>",
+      "<strong>Stroke-Seg: A Deep Learning-based Framework for Chinese Stroke Segmentation</strong><br><em>Gong, X., <strong>Bai, Z.</strong>, Nie, H., Xie, B.</em><br>IET Image Processing <strong>TopViewedArticle</strong> 2025 — Co-first Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Designed a multi-label semantic segmentation framework leveraging stroke prior knowledge for complex character stroke segmentation.</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/BCSS' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://ietresearch.onlinelibrary.wiley.com/journal/17519667' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Paper]</a></div>",
 
-      "<strong>Disability-Net: A Causality-based Disability Early Warning Model Using Longitudinal Data</strong><br><em>Nie, H., <strong>Bai, Z.</strong>, Xie, B.</em><br>Nature Digital Medicine 2024 (Under review) — Second Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a graph neural network model employing adaptive temporal sequence perception and causal discovery to predict elderly disability risks using clinical EHR data.</span>",
+      "<!-- <strong>Disability-Net: A Causality-based Disability Early Warning Model Using Longitudinal Data</strong><br><em>Nie, H., <strong>Bai, Z.</strong>, Xie, B.</em><br>Nature Digital Medicine 2024 (Under review) — Second Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a graph neural network model employing adaptive temporal sequence perception and causal discovery to predict elderly disability risks using clinical EHR data.</span> -->",
 
-      "<strong>Stroke-Seg: A Deep Learning-based Framework for Chinese Stroke Segmentation</strong><br><em>Gong, X., <strong>Bai, Z.</strong>, Nie, H., Xie, B.</em><br>IET Image Processing 2024 (Published) — Co-first Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Designed a multi-label semantic segmentation framework leveraging stroke prior knowledge for complex character stroke segmentation.</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/BCSS' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://ietresearch.onlinelibrary.wiley.com/journal/17519667' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Paper]</a></div>"
+      "<!-- <strong>PartGo: Training-Free Localized 3D Part Editing with Constrained Flow</strong><br><em>Niu, H., Meng, L., <strong>Bai, Z.</strong>, Wang, Y., Xiao, J.</em><br>ECCV 2026 (Under review)<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a terminal-flow-guided 3D part editing framework decoupling semantic localization and geometric deformation for zero-shot editing.</span> -->",
+
+      "<!-- <strong>Seeing the Unseen: Gaussians Diffusion for Sparse-View 3D Generalization</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Wang, Y., Xiao, J.</em><br>ECCV 2026 (Under review) — First Author<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>Developed a semantic-conditioned diffusion repair framework for feed-forward 3DGS under sparse views, solving unseen region modeling and improving scene extrapolation PSNR by 2.5dB while maintaining real-time rendering.</span> -->"
     ],
     projectsTitle: "Other Projects",
     projects: [
-      "<strong>Object-level Streaming 3D Reconstruction</strong> (MIT Research Internship, 2026.03–Present): Engaged in streaming 3D reconstruction research, focusing on algorithm expansion in complex dynamic scenes.",
-      "<strong>Missing Modality Glaucoma Diagnosis (2023–2024):</strong> Formulated 'Freeze-Missing-VF', an assistance system handling structrual data missing scenarios for early disease screening."
+      "<!-- <strong>Object-level Streaming 3D Reconstruction</strong> (MIT Research Internship, 2026.03–Present): Engaged in streaming 3D reconstruction research, focusing on algorithm expansion in complex dynamic scenes. -->",
+      "<!-- <strong>Missing Modality Glaucoma Diagnosis (2023–2024):</strong> Formulated 'Freeze-Missing-VF', an assistance system handling structrual data missing scenarios for early disease screening. -->"
     ],
     educationTitle: "Education",
     education: [
@@ -44,33 +46,35 @@ const content = {
   },
   zh: {
     pageTitle: "白泽阳 | 学术主页",
-    name: "白泽阳 (Zeyang Bai)",
-    tagline: "中国科学院大学硕士生 | 三维视觉、可控生成、AI for Science",
+    name: "白泽阳",
+    tagline: "中国科学院大学硕士生",
     aboutTitle: "关于我",
     aboutText:
-      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我在香港科技大学（HKUST）随<a href='https://fnzhan.com/' target='_blank'>占方能教授（Prof. Fangneng Zhan）</a>开展科研实习，并在麻省理工学院（MIT）与<a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>合作开展实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）、基于扩散模型的可控三维生成，以及 AI for Science (AI4Sci)。",
+      "我目前在中国科学院大学攻读硕士学位，师从肖俊教授（Prof. Jun Xiao）。同时，我在香港科技大学（HKUST）随<a href='https://fnzhan.com/' target='_blank'>占方能教授（Prof. Fangneng Zhan）</a>开展科研实习，并在麻省理工学院（MIT）与<a href='https://kaichen-z.github.io/' target='_blank'>Kaichen Zhou</a>合作开展实习。在此之前，我于中南大学获得了人工智能专业工学学士学位。我的主要研究兴趣包括面向稀疏视角的三维高斯溅射（3D Gaussian Splatting）与基于扩散模型的可控三维生成。<!-- 以及 AI for Science (AI4Sci)。 -->",
     interestsTitle: "研究兴趣",
     interests: [
-      "稀疏视角 3D Gaussian Splatting 与神经渲染",
-      "基于扩散模型的三维场景生成与可控编辑",
-      "AI for Science (AI4Sci) 与可信人工智能"
+      "三维重建与生成",
+      "世界模型与空间智能",
+      "计算机视觉"
     ],
     publicationsTitle: "学术论文与研究",
     publications: [
-      "<strong>Seeing the Unseen: Gaussians Diffusion for Sparse-View 3D Generalization</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Wang, Y., Xiao, J.</em><br>ECCV 2026 (在投) — 第一作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>针对稀疏视角前馈式3DGS的未见区域合成问题，设计了带有语义条件嵌入的扩散修补模型，在保持0.1s极速渲染的同时使场景外推任务的PSNR提升了2.5dB。</span>",
+      "<strong>Stream3D: Sequential Multi-View 3D Generation via Evidential Memory</strong><br><em>Kaichen Zhou, <strong>Bai, Z.</strong>, Xinhai Chang, Mengyu Wang, Paul Liang, Fangneng Zhan</em><br>CVPRW 2026（E2E3D）— 共同一作（学生一作）<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>提出一种训练免调的流式三维生成机制，通过证据记忆将冻结的单视角三维生成器扩展为可处理长序列多视图输入的连续生成框架。</span><br><div style='margin-top: 6px;'><a href='https://stream-3d.github.io/stream3d.github.io/' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Project Page]</a> <a href='https://arxiv.org/abs/2605.21472' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[Arxiv]</a></div>",
 
-      "<strong>PartGo: Training-Free Localized 3D Part Editing with Constrained Flow</strong><br><em>Niu, H., Meng, L., <strong>Bai, Z.</strong>, Wang, Y., Xiao, J.</em><br>ECCV 2026 (在投)<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>研发了基于终端流导引的三维部件编辑框架，通过解耦语义定位与几何变形，实现了无需训练的端到端可控部件编辑。</span>",
+      "<strong>GraphSplat: Sparse-View Generalizable 3D Gaussian Splatting is Worth Graph of Nodes</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Yu, D., Xiao, J., Liu, L.</em><br>ACM Multimedia 2025 <strong>Oral</strong> — 第一作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>创新性地将图像像素建模为图节点，融合跨视角与单视特征进行深度退化补偿，结合多视聚合图注意力机制实现了毫秒级的高质量稀疏视角神经重建。</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/GraphSplat' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://dl.acm.org/doi/10.1145/3746027.3755481' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[论文主页]</a></div>",
 
-      "<strong>GraphSplat: Sparse-View Generalizable 3D Gaussian Splatting is Worth Graph of Nodes</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Yu, D., Xiao, J., Liu, L.</em><br>ACM Multimedia 2025 (Oral) — 第一作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>创新性地将图像像素建模为图节点，融合跨视角与单视特征进行深度退化补偿，结合多视聚合图注意力机制实现了毫秒级的高质量稀疏视角神经重建。</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/GraphSplat' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://arxiv.org/' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[论文主页]</a></div>",
+      "<strong>Stroke-Seg: A Deep Learning-based Framework for Chinese Stroke Segmentation</strong><br><em>Gong, X., <strong>Bai, Z.</strong>, Nie, H., Xie, B.</em><br>IET Image Processing <strong>TopViewedArticle</strong> 2025 — 共同一作<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>针对汉字笔画中的复杂交叉形态，设计了引入笔画先验的多标签语义分割网络，提升了分割效果的清晰度与准确性。</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/BCSS' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://ietresearch.onlinelibrary.wiley.com/journal/17519667' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[论文主页]</a></div>",
 
-      "<strong>Disability-Net: A Causality-based Disability Early Warning Model Using Longitudinal Data</strong><br><em>Nie, H., <strong>Bai, Z.</strong>, Xie, B.</em><br>Nature Digital Medicine 2024 (在投) — 第二作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>结合因果发现算法与自适应时序感知技术，基于纵向电子病历数据开发了用于老年个体失能风险的预测模型。</span>",
+      "<!-- <strong>Disability-Net: A Causality-based Disability Early Warning Model Using Longitudinal Data</strong><br><em>Nie, H., <strong>Bai, Z.</strong>, Xie, B.</em><br>Nature Digital Medicine 2024 (在投) — 第二作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>结合因果发现算法与自适应时序感知技术，基于纵向电子病历数据开发了用于老年个体失能风险的预测模型。</span> -->",
 
-      "<strong>Stroke-Seg: A Deep Learning-based Framework for Chinese Stroke Segmentation</strong><br><em>Gong, X., <strong>Bai, Z.</strong>, Nie, H., Xie, B.</em><br>IET Image Processing 2024 (已发表) — 共同一作<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>针对汉字笔画中的复杂交叉形态，设计了引入笔画先验的多标签语义分割网络，提升了分割效果的清晰度与准确性。</span><br><div style='margin-top: 6px;'><a href='https://github.com/Rvosuke/BCSS' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[GitHub]</a> <a href='https://ietresearch.onlinelibrary.wiley.com/journal/17519667' target='_blank' style='font-size: 0.9em; font-weight: 500;'>[论文主页]</a></div>"
+      "<!-- <strong>PartGo: Training-Free Localized 3D Part Editing with Constrained Flow</strong><br><em>Niu, H., Meng, L., <strong>Bai, Z.</strong>, Wang, Y., Xiao, J.</em><br>ECCV 2026 (在投)<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>研发了基于终端流导引的三维部件编辑框架，通过解耦语义定位与几何变形，实现了无需训练的端到端可控部件编辑。</span> -->",
+
+      "<!-- <strong>Seeing the Unseen: Gaussians Diffusion for Sparse-View 3D Generalization</strong><br><em><strong>Bai, Z.*</strong>, Wang, Y., Wang, Y., Xiao, J.</em><br>ECCV 2026 (在投) — 第一作者<br><span style='color: var(--text-secondary); font-size: 0.95em; display: inline-block; margin-top: 8px;'>针对稀疏视角前馈式3DGS的未见区域合成问题，设计了带有语义条件嵌入的扩散修补模型，在保持0.1s极速渲染的同时使场景外推任务的PSNR提升了2.5dB。</span> -->"
     ],
     projectsTitle: "其他项目",
     projects: [
-      "<strong>目标级流式三维重建</strong>（麻省理工学院 (MIT) 科研实习，2026.03–至今）：参与流式三维重建的远程合作研究，侧重于复杂动态场景下的算法扩展。",
-      "<strong>缺失模态青光眼智能辅助</strong>（重点研发计划分项，2023–2024）：开发了针对数据缺失环境下的辅助诊疗预备模型（Freeze-Missing-VF）。"
+      "<!-- <strong>目标级流式三维重建</strong>（麻省理工学院 (MIT) 科研实习，2026.03–至今）：参与流式三维重建的远程合作研究，侧重于复杂动态场景下的算法扩展。 -->",
+      "<!-- <strong>缺失模态青光眼智能辅助</strong>（重点研发计划分项，2023–2024）：开发了针对数据缺失环境下的辅助诊疗预备模型（Freeze-Missing-VF）。 -->"
     ],
     educationTitle: "教育经历",
     education: [
@@ -112,6 +116,7 @@ function renderList(id, items) {
   if (!ul) return;
   ul.innerHTML = "";
   items.forEach((item) => {
+    if (typeof item === "string" && item.trim().startsWith("<!--")) return;
     const li = document.createElement("li");
     li.innerHTML = item;
     ul.appendChild(li);
@@ -154,6 +159,12 @@ function setLanguage(lang) {
   renderList("projects-list", data.projects);
   renderList("education-list", data.education);
   renderContacts(data.contact);
+
+  const projectsSection = document.getElementById("projects-section");
+  if (projectsSection) {
+    const hasVisibleProject = Array.isArray(data.projects) && data.projects.some((item) => typeof item === "string" && !item.trim().startsWith("<!--"));
+    projectsSection.style.display = hasVisibleProject ? "" : "none";
+  }
 
   const langEnBtn = document.getElementById("lang-en");
   const langZhBtn = document.getElementById("lang-zh");
