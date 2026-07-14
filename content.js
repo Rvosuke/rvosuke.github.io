@@ -38,7 +38,8 @@ const content = {
     ],
     serviceTitle: "Academic Service",
     service: [
-      "Reviewer, Pacific Graphics 2026 (PG, CCF B)"
+      "Reviewer, Pacific Graphics 2026 (PG, CCF B)",
+      "Organizer, NeurIPS 2026 Workshop: Physical World Model"
     ],
     contactTitle: "Contact",
     contactMessage: "Open to exciting collaborations in 3D vision and AI4Sci.",
@@ -87,7 +88,8 @@ const content = {
     ],
     serviceTitle: "学术服务",
     service: [
-      "Pacific Graphics 2026 (PG, CCF B) 审稿人"
+      "Pacific Graphics 2026 (PG, CCF B) 审稿人",
+      "NeurIPS 2026 Workshop: Physical World Model 组织者"
     ],
     contactTitle: "联系方式",
     contactMessage: "欢迎围绕三维视觉或 AI for Science 领域进行学术交流与合作探讨。",
