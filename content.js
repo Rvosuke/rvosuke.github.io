@@ -36,6 +36,10 @@ const content = {
       "<strong>University of Chinese Academy of Sciences (UCAS)</strong> — M.Eng. in Computer Applied Technology (2025.09–2028.06)",
       "<strong>Central South University (CSU)</strong> — B.Eng. in Artificial Intelligence (2021.09–2025.06)"
     ],
+    serviceTitle: "Academic Service",
+    service: [
+      "Reviewer, Pacific Graphics 2026 (PG, CCF B)"
+    ],
     contactTitle: "Contact",
     contactMessage: "Open to exciting collaborations in 3D vision and AI4Sci.",
     contact: [
@@ -80,6 +84,10 @@ const content = {
     education: [
       "<strong>中国科学院大学（UCAS）</strong> — 计算机应用技术 · 工学硕士（2025.09–2028.06）",
       "<strong>中南大学（CSU）</strong> — 人工智能 · 工学学士（2021.09–2025.06）"
+    ],
+    serviceTitle: "学术服务",
+    service: [
+      "Pacific Graphics 2026 (PG, CCF B) 审稿人"
     ],
     contactTitle: "联系方式",
     contactMessage: "欢迎围绕三维视觉或 AI for Science 领域进行学术交流与合作探讨。",
@@ -144,7 +152,7 @@ function setLanguage(lang) {
   const textIds = [
     "name", "tagline", "about-title", "about-text",
     "interests-title", "publications-title", "projects-title",
-    "education-title", "contact-message", "footer-text"
+    "education-title", "service-title", "contact-message", "footer-text"
   ];
 
   textIds.forEach(id => {
@@ -158,6 +166,7 @@ function setLanguage(lang) {
   renderList("publications-list", data.publications);
   renderList("projects-list", data.projects);
   renderList("education-list", data.education);
+  renderList("service-list", data.service);
   renderContacts(data.contact);
 
   const projectsSection = document.getElementById("projects-section");
