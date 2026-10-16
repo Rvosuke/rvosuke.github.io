@@ -144,7 +144,16 @@
     list.replaceChildren();
     strings.service.forEach(function (service) {
       var item = document.createElement("li");
-      item.textContent = service;
+      if (typeof service === "string") item.textContent = service;
+      else {
+        item.appendChild(document.createTextNode(service.role + " · "));
+        var link = document.createElement("a");
+        link.textContent = service.name;
+        link.href = service.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        item.appendChild(link);
+      }
       list.appendChild(item);
     });
   }

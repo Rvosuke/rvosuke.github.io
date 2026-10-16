@@ -68,4 +68,4 @@ On a downward chapter change, one decorative CSS comet crosses the viewport and 
 
 SeeU is the fourth public research record and is excluded from selected research. Its title, author order, abstract, ECCV 2026 Workshop (3DWM) acceptance and first-page figure were checked against arXiv:2608.22740v1 and the supplied Scholar record. The ByteDance algorithm internship is dated July 2026–present from the user’s instruction, without a guessed team or project description. Tab titles use only the person’s name in the selected language.
 
-The archive count/author-formatting notice and the generic trajectory introduction are omitted. Academic service includes Pattern Recognition and MMM reviewer roles, without unconfirmed years.
+The archive count/author-formatting notice and the generic trajectory introduction are omitted. Academic service includes Pattern Recognition and MultiMedia Modeling 2027 reviewer roles. The latter uses the full conference name, user-confirmed year and a link to https://mmm2027.net/.

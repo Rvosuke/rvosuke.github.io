@@ -111,7 +111,8 @@ def run():
                         assert '2026.07' in page.locator('.trajectory-item').first.inner_text()
                         assert page.locator('.service-list li').count() == 4
                         assert 'Pattern Recognition' in page.locator('.service-list').inner_text()
-                        assert 'MMM' in page.locator('.service-list').inner_text()
+                        assert 'MultiMedia Modeling 2027' in page.locator('.service-list').inner_text()
+                        assert page.locator('.service-list a[href="https://mmm2027.net/"]').inner_text() == 'MultiMedia Modeling 2027'
                     cases += 1
         print(f'PASS {cases} responsive page/language combinations (320–1440 px)')
 
