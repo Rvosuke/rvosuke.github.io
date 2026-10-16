@@ -51,3 +51,10 @@ The homepage academic role line was removed at the user's request; it remains on
 ## Validation
 
 Run `python3 tests/smoke.py` for the responsive and interaction regression suite. The site has no runtime network dependencies. External publication/advisor links remain the supplied links; successful local validation does not establish that those remote destinations are reachable.
+
+
+## Release cache consistency
+
+All three pages reference content-fingerprinted CSS and JavaScript paths under `assets/site/`. Source files remain at the repository root for maintenance. Run `python3 scripts/prepare_assets.py` after changing CSS or JavaScript, then commit both the generated files and updated HTML. Previous fingerprinted files are deliberately retained so existing cached HTML can still find its matching resources.
+
+This fixes the observed return-visitor failure where new HTML loaded the old `/styles.css`: the header fell back to normal document flow and an unstyled full-viewport canvas pushed the headline below the fold. A browser test now primes the original CSS/JS URLs with long-lived legacy responses, navigates to the new pages with the same browser cache, and verifies layout, visible headline, language switching and cross-page navigation.

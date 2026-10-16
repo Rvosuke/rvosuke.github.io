@@ -1,12 +1,13 @@
 # Zeyang Bai · Orbit Archive
 
-A bilingual academic homepage for 白泽阳 / Zeyang Bai, built with plain HTML, CSS and JavaScript for GitHub Pages. No package install, build, API key or external font service is required.
+A bilingual academic homepage for 白泽阳 / Zeyang Bai, built with plain HTML, CSS and JavaScript for GitHub Pages. No package install, bundler, API key or external font service is required. A small Python helper fingerprints CSS and JavaScript before publishing to prevent stale-cache layout failures.
 
 ## Develop locally
 
 From this checkout:
 
 ```sh
+python3 scripts/prepare_assets.py
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
@@ -19,6 +20,7 @@ Use the existing checkout in a cloud task; no separate worktree is needed. The s
 - `site.js`: language preferences, navigation, filters and chapter state.
 - `orbit.js`: progressive Canvas enhancement with static CSS and reduced-motion fallbacks.
 - `styles.css`: shared design tokens, responsive layouts and interaction states.
+- `scripts/prepare_assets.py`: generates content-fingerprinted copies under `assets/site/` and updates all three HTML pages. Run it after CSS/JS edits and before publishing. Keep previous fingerprinted files so cached HTML retains working asset URLs.
 
 English and Chinese can be selected using `?lang=en` / `?lang=zh`. The choice persists locally and carries across pages. Research filters are recorded in `?filter=generation`, `reconstruction` or `vision`.
 
@@ -38,7 +40,7 @@ Browser regression tests use Python Playwright and Chromium (development tools o
 python3 tests/smoke.py
 ```
 
-The test launches a temporary loopback server. Set `CHROMIUM_PATH` if Chromium lives at a custom path. It checks 30 page/language/viewport combinations, language persistence, filters, mobile keyboard navigation, canvas fallback and reduced motion. There is no production build step.
+The test launches a temporary loopback server. Set `CHROMIUM_PATH` if Chromium lives at a custom path. It checks 30 page/language/viewport combinations, language persistence, filters, mobile keyboard navigation, canvas fallback and reduced motion. No framework build is needed. `python3 scripts/prepare_assets.py --check` verifies that the generated files and HTML references match the current CSS/JS source; the browser suite runs this check too. The suite also primes a real browser cache with legacy CSS/JS and checks that all three current pages still render and work correctly.
 
 Research images are stored in `assets/papers/` with provenance in [sources.json](assets/papers/sources.json). Stream3D uses Figure 1 from the latest checked arXiv v5. GraphSplat uses Figure 2 from the published paper, retrieved through Semantic Scholar's public extraction. Stroke-Seg currently uses the original BCSS dataset image from the author repository: publisher verification blocks access to its final PDF, so that image is explicitly identified as an author-repository image. The custom conceptual SVGs have been removed. Images preserve their complete aspect ratio, with no recoloring or scientific edits. All images load locally.
 

@@ -8,7 +8,10 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import os
 import shutil
+import subprocess
+import sys
 import threading
+from urllib.parse import urlsplit
 
 from playwright.sync_api import sync_playwright
 
@@ -20,9 +23,35 @@ class QuietHandler(SimpleHTTPRequestHandler):
         pass
 
 
+class LegacyCacheHandler(QuietHandler):
+    """Model a returning visitor with fresh copies of the old asset URLs."""
+    legacy_requests = 0
+
+    def do_GET(self):
+        path = urlsplit(self.path).path
+        if path == '/legacy-cache':
+            body = b'''<!doctype html><title>Warm legacy cache</title>
+              <link rel="stylesheet" href="/styles.css">
+              <script src="/content.js"></script><script src="/site.js"></script>
+              <script src="/orbit.js"></script><p>Legacy site</p>'''
+            content_type = 'text/html'
+        elif path in ('/styles.css', '/content.js', '/site.js', '/orbit.js'):
+            type(self).legacy_requests += 1
+            body = b'body{background:#0f172a}a{color:#2563eb}' if path.endswith('.css') else b'window.legacyCachedAsset=true;'
+            content_type = 'text/css' if path.endswith('.css') else 'text/javascript'
+        else:
+            return super().do_GET()
+        self.send_response(200)
+        self.send_header('Content-Type', content_type)
+        self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', 'public, max-age=86400')
+        self.end_headers()
+        self.wfile.write(body)
+
+
 @contextmanager
-def local_server():
-    server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT)))
+def local_server(handler=QuietHandler):
+    server = ThreadingHTTPServer(('127.0.0.1', 0), partial(handler, directory=str(ROOT)))
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
@@ -42,6 +71,7 @@ def no_overflow(page):
 
 
 def run():
+    subprocess.run([sys.executable, str(ROOT / 'scripts/prepare_assets.py'), '--check'], check=True)
     with local_server() as base, sync_playwright() as p:
         executable = os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or shutil.which('google-chrome')
         launch = {'headless': True, 'args': ['--no-sandbox']}
@@ -68,6 +98,8 @@ def run():
                     no_overflow(page)
                     if name == 'index':
                         assert page.locator('.hero-role').count() == 0
+                        assert page.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
+                        assert page.locator('h1').evaluate('(el) => el.getBoundingClientRect().bottom <= innerHeight')
                     if name == 'research':
                         assert page.locator('.research-record').count() == 3
                         assert page.locator('.record-authors strong').count() == 3
@@ -167,6 +199,34 @@ def run():
         assert not errors, errors
         assert (ROOT / 'CNAME').read_text().strip() == 'baizey.rvosuke.com'
         print('PASS no external page dependencies, no JavaScript errors; CNAME preserved')
+
+        # Routing disables the browser cache, so use a separate context with no
+        # interception to cover returning visitors rather than just cold loads.
+        with local_server(LegacyCacheHandler) as cached_base:
+            cached_context = browser.new_context(viewport={'width': 1440, 'height': 1000}, reduced_motion='reduce')
+            cached = cached_context.new_page()
+            cached.goto(cached_base + '/legacy-cache', wait_until='networkidle')
+            assert cached.evaluate('window.legacyCachedAsset === true')
+            assert cached.locator('body').evaluate('(el) => getComputedStyle(el).backgroundColor') == 'rgb(15, 23, 42)'
+            assert LegacyCacheHandler.legacy_requests == 4
+            cached.goto(cached_base + '/index.html?lang=en', wait_until='networkidle')
+            assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
+            assert cached.locator('.skip-link').evaluate('(el) => el.getBoundingClientRect().bottom <= 0')
+            assert cached.locator('h1').evaluate('(el) => el.getBoundingClientRect().bottom <= innerHeight')
+            assert cached.locator('#orbit-canvas').evaluate('(el) => el.getBoundingClientRect().top') == 0
+            assert cached.locator('[data-featured-research] .featured-card').count() == 2
+            assert cached.evaluate('typeof window.legacyCachedAsset === "undefined"')
+            cached.locator('[data-language-switch]').click()
+            assert cached.locator('.hero-title-accent').inner_text() == '到三维世界。'
+            cached.locator('.site-nav a[href*="research.html"]').click()
+            assert cached.locator('.research-record').count() == 3
+            assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
+            cached.locator('.site-nav a[href*="about.html"]').click()
+            assert cached.locator('h1').inner_text() == '白泽阳。'
+            assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
+            assert LegacyCacheHandler.legacy_requests == 4
+            cached_context.close()
+        print('PASS warm legacy CSS/JS cache: all three pages load matching styles and functional scripts')
         browser.close()
 
 
