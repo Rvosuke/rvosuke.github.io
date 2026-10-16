@@ -95,40 +95,44 @@ def run():
                     assert page.locator('h1').is_visible()
                     assert page.locator('html').get_attribute('lang') == ('zh-CN' if lang == 'zh' else 'en')
                     assert page.locator('[aria-current="page"]').count() == 1
+                    assert page.title() == ('白泽阳' if lang == 'zh' else 'Zeyang Bai')
                     no_overflow(page)
                     if name == 'index':
                         assert page.locator('.hero-role').count() == 0
                         assert page.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
                         assert page.locator('h1').evaluate('(el) => el.getBoundingClientRect().bottom <= innerHeight')
                     if name == 'research':
-                        assert page.locator('.research-record').count() == 3
-                        assert page.locator('.record-authors strong').count() == 3
+                        assert page.locator('.research-record').count() == 4
+                        assert page.locator('.record-authors strong').count() == 4
                     if name == 'about':
-                        assert page.locator('.trajectory-item').count() == 4
+                        assert page.locator('.trajectory-item').count() == 5
+                        assert 'ByteDance' in page.locator('.trajectory-item').first.inner_text()
+                        assert '2026.07' in page.locator('.trajectory-item').first.inner_text()
                         assert page.locator('.service-list li').count() == 2
                     cases += 1
         print(f'PASS {cases} responsive page/language combinations (320–1440 px)')
 
         page.set_viewport_size({'width': 1440, 'height': 1000})
         page.goto(base + '/research.html?lang=en')
-        for category, record_id in [('generation', 'stream3d'), ('reconstruction', 'graphsplat'), ('vision', 'stroke-seg')]:
+        for category, record_ids in [('generation', ['stream3d']), ('reconstruction', ['seeu', 'graphsplat']), ('vision', ['stroke-seg'])]:
             page.locator(f'[data-filter="{category}"]').click()
-            assert page.locator('.research-record').count() == 1
-            assert page.locator('.research-record').get_attribute('id') == record_id
+            assert page.locator('.research-record').evaluate_all('(items) => items.map(el => el.id)') == record_ids
             assert f'filter={category}' in page.url
             assert page.locator(f'[data-filter="{category}"]').evaluate('(el) => el === document.activeElement')
             assert page.locator(f'[data-filter="{category}"]').get_attribute('aria-pressed') == 'true'
-            assert '1 work' in page.locator('[data-research-summary]').inner_text()
+            assert str(len(record_ids)) in page.locator('[data-research-summary]').inner_text()
         page.reload()
         assert page.locator('.research-record').count() == 1
         page.locator('[data-language-switch]').click()
         assert page.locator('.research-record').get_attribute('id') == 'stroke-seg'
         assert '共 1' in page.locator('[data-research-summary]').inner_text()
         page.locator('[data-filter="all"]').click()
-        assert page.locator('.research-record').count() == 3
-        assert page.locator('.research-figure figcaption a').count() == 3
+        assert page.locator('.research-record').count() == 4
+        assert page.locator('.research-figure figcaption').count() == 0
         assert page.locator('.research-figure img[src$=".svg"]').count() == 0
-        assert 'arXiv v5' in page.locator('#stream3d figcaption').inner_text()
+        assert page.locator('#seeu .record-project').inner_text() == 'SeeU'
+        assert '3DWM' in page.locator('#seeu .record-venue').inner_text()
+        assert page.locator('#seeu .record-authors strong').inner_text() == 'Zeyang Bai'
         for image in page.locator('.research-figure img').all():
             image.scroll_into_view_if_needed()
             image.evaluate('(img) => img.decode()')
@@ -139,7 +143,11 @@ def run():
         assert page.locator('.about-portrait').evaluate('(img) => img.complete && img.naturalWidth > 0')
         page.goto(base + '/index.html')
         assert page.locator('html').get_attribute('lang') == 'zh-CN'
-        print('PASS filters, URL persistence, author highlights, paper images, cross-page language and portrait')
+        print('PASS SeeU, filters, original paper images, ByteDance timeline, names-only titles and bilingual navigation')
+
+        assert page.locator('[data-featured-research] .featured-card').count() == 2
+        assert page.locator('[data-featured-research] a[href*="seeu"]').count() == 0
+        assert page.locator('figcaption').count() == 0
 
         # Chapter links work with keyboard focus and select the corresponding section.
         page.locator('.chapter-rail a[href="#selected-research"]').focus()
@@ -198,6 +206,30 @@ def run():
         fallback.close()
         print('PASS visible canvas, static reduced motion, live motion preference changes and CSS fallback')
 
+        # Test the requested chapter transitions through real scrolling.
+        page.goto(base + '/index.html?lang=en')
+        page.emulate_media(reduced_motion='no-preference')
+        page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+        assert page.locator('#signal .section-shell').evaluate('(el) => parseFloat(getComputedStyle(el).opacity) < 1')
+        page.locator('#signal').evaluate("el => el.scrollIntoView({behavior:'instant',block:'start'})")
+        page.wait_for_function("document.querySelector('.chapter-comet.is-crossing') !== null")
+        assert page.locator('.chapter-comet').evaluate('(el) => getComputedStyle(el).pointerEvents') == 'none'
+        page.wait_for_function("getComputedStyle(document.querySelector('#signal .section-shell')).filter === 'blur(0px)'")
+        assert page.locator('#signal .section-shell').evaluate('(el) => parseFloat(getComputedStyle(el).opacity)') == 1
+        assert page.locator('#signal h2').is_visible()
+        page.wait_for_function("!document.querySelector('.chapter-comet').classList.contains('is-crossing')")
+        page.locator('#selected-research').evaluate("el => el.scrollIntoView({behavior:'instant',block:'start'})")
+        page.wait_for_function("document.querySelector('.chapter-comet.is-crossing') !== null")
+        assert page.locator('.chapter-comet').count() == 1
+        page.emulate_media(reduced_motion='reduce')
+        page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+        assert page.locator('.chapter-comet').evaluate('(el) => getComputedStyle(el).display') == 'none'
+        assert page.locator('.chapter-comet.is-crossing').count() == 0
+        assert page.locator('#selected-research .section-shell').evaluate('(el) => getComputedStyle(el).filter') == 'none'
+        assert page.locator('#selected-research h2').is_visible()
+        no_overflow(page)
+        print('PASS scroll-triggered comet, blur-to-clear chapter reveal, cleanup and reduced-motion cancellation')
+
         assert not external_requests, external_requests
         assert not errors, errors
         assert (ROOT / 'CNAME').read_text().strip() == 'baizey.rvosuke.com'
@@ -226,7 +258,7 @@ def run():
             assert cached.locator('.hero-title-accent').inner_text() == '到三维世界。'
             cached.locator('.site-nav a[href*="research.html"]').click()
             assert parse_qs(urlsplit(cached.url).query)['v'][0] == cached.locator('html').get_attribute('data-release')
-            assert cached.locator('.research-record').count() == 3
+            assert cached.locator('.research-record').count() == 4
             assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
             cached.locator('.site-nav a[href*="about.html"]').click()
             assert cached.locator('h1').inner_text() == '白泽阳。'

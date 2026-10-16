@@ -28,8 +28,19 @@
     "paper": "https://doi.org/10.1049/ipr2.13255",
     "source": "https://raw.githubusercontent.com/Rvosuke/BCSS/main/assets/dataset.png",
     "repository": "https://github.com/Rvosuke/BCSS",
-    "extraction": "Original dataset illustration from the author's paper-linked repository, resized proportionally to 2000px wide and encoded as lossless WebP. The publisher's article/PDF routes return HTTP 403 browser verification. This image is explicitly captioned as an author-repository image, not as an extracted final-paper figure.",
+    "extraction": "Original dataset illustration from the author's paper-linked repository, resized proportionally to 2000px wide and encoded as lossless WebP. The publisher's article/PDF routes return HTTP 403 browser verification. Provenance records this as an author-repository image, not an extracted final-paper figure. Visible figure captions are omitted at the user’s request.",
     "original_image_sha256": "1b0b9b773c18e1d910c1f5338d843af609ab3a672f56e477cec48acef46b1adb",
     "pending": "Replace with the final-paper teaser if an accessible publisher PDF or author-supplied PDF becomes available."
+  },
+  "seeu": {
+    "file": "seeu.webp",
+    "kind": "paper_figure",
+    "version": "arXiv:2608.22740v1, submitted 2026-08-24",
+    "figure": "Figure 1, page 1",
+    "paper": "https://arxiv.org/abs/2608.22740v1",
+    "source": "https://arxiv.org/pdf/2608.22740v1",
+    "extraction": "Rendered the complete Figure 1 region at 4x from page 1 (PDF crop rectangle 134,215,481,341 pt) and encoded as lossless WebP, without recoloring or editing the scientific content.",
+    "source_pdf_sha256": "681654355e4d8e107b3b4815d549d166d0e33a42dd7214e0fe18889c8e16b6f6",
+    "metadata_source": "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=0zge9IYAAAAJ&citation_for_view=0zge9IYAAAAJ:O3NaXMp0MMsC"
   }
 }

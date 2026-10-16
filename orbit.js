@@ -12,10 +12,21 @@
   var state = {
     width: 1, height: 1, dpr: 1, time: 0, chapter: 0,
     pointerX: 0, pointerY: 0, targetX: 0, targetY: 0,
-    running: !document.hidden, frame: 0, lastFrame: 0
+    running: !document.hidden, frame: 0, lastFrame: 0,
+    previousChapter: 0, transitionStart: -2000
   };
   var pointCount = window.innerWidth < 760 ? 220 : window.innerWidth < 1100 ? 420 : 680;
   var points = [];
+  var comet = document.createElement("div");
+  comet.className = "chapter-comet";
+  comet.setAttribute("aria-hidden", "true");
+  document.body.appendChild(comet);
+  comet.addEventListener("animationend", function () { comet.classList.remove("is-crossing"); });
+
+  function ease(value) { return value * value * (3 - 2 * value); }
+  function transitionProgress(now) {
+    return reduced ? 1 : Math.max(0, Math.min(1, (now - state.transitionStart) / 1350));
+  }
 
   function seeded(index) {
     var value = Math.sin(index * 127.1 + 311.7) * 43758.5453123;
@@ -35,7 +46,11 @@
         z: Math.sin(theta) * radius,
         phase: seeded(i) * Math.PI * 2,
         size: 0.45 + seeded(i + 91) * 1.2,
-        group: i % 3
+        group: i % 3,
+        jitterX: seeded(i + 317) * 2 - 1,
+        jitterY: seeded(i + 521) * 2 - 1,
+        jitterZ: seeded(i + 719) * 2 - 1,
+        from: null
       });
     }
   }
@@ -100,12 +115,30 @@
     ctx.restore();
   }
 
+  function formedPoint(point, time, progress) {
+    var target = scenePoint(point, state.chapter, time);
+    if (progress >= 1 || !point.from) return target;
+    var weight = ease(progress);
+    var spread = Math.sin(Math.PI * progress) * 0.2;
+    return {
+      x: point.from.x + (target.x - point.from.x) * weight + point.jitterX * spread,
+      y: point.from.y + (target.y - point.from.y) * weight + point.jitterY * spread,
+      z: point.from.z + (target.z - point.from.z) * weight + point.jitterZ * spread
+    };
+  }
+
   function draw() {
     var w = state.width, h = state.height;
     ctx.clearRect(0, 0, w, h);
     var mobile = w < 760;
+    var progress = transitionProgress(performance.now());
+    var chapterMix = state.previousChapter + (state.chapter - state.previousChapter) * ease(progress);
+    var softness = Math.sin(Math.PI * progress);
     var cx = mobile ? w * 0.72 : w * 0.73;
-    var cy = mobile ? (state.chapter === 0 ? Math.max(660, h * 0.79) : h * 0.5) : h * 0.49;
+    var heroY = Math.max(660, h * 0.79);
+    var previousY = state.previousChapter === 0 ? heroY : h * 0.5;
+    var nextY = state.chapter === 0 ? heroY : h * 0.5;
+    var cy = mobile ? previousY + (nextY - previousY) * ease(progress) : h * 0.49;
     var scale = Math.min(w, h) * (mobile ? 0.42 : 0.34);
     var time = reduced ? 0.8 : state.time;
     state.pointerX += (state.targetX - state.pointerX) * 0.055;
@@ -113,12 +146,12 @@
     var yaw = time * 0.055 + state.pointerX * 0.24;
     var pitch = -0.15 + state.pointerY * 0.14;
 
-    drawOrbit(cx, cy, scale * 1.12, scale * 0.34, -0.42 + state.chapter * 0.06, 0.16);
-    drawOrbit(cx, cy, scale * 0.94, scale * 0.2, 0.62 - state.chapter * 0.04, 0.12);
+    drawOrbit(cx, cy, scale * 1.12, scale * 0.34, -0.42 + chapterMix * 0.06, 0.16);
+    drawOrbit(cx, cy, scale * 0.94, scale * 0.2, 0.62 - chapterMix * 0.04, 0.12);
     drawOrbit(cx, cy, scale * 0.68, scale * 0.12, 1.04, 0.08);
 
     var projected = points.map(function (point) {
-      var formed = scenePoint(point, state.chapter, time);
+      var formed = formedPoint(point, time, progress);
       var rotated = rotate(formed, yaw, pitch);
       var depth = 3.5 + rotated.z;
       var perspective = 3.35 / depth;
@@ -148,6 +181,12 @@
         }
       }
       var tint = point.group === 0 ? "109,231,242" : point.group === 1 ? "93,159,255" : "237,246,248";
+      if (softness > 0.02) {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, Math.max(1, point.size) * (1 + softness * 3), 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(" + tint + "," + (point.alpha * softness * 0.12) + ")";
+        ctx.fill();
+      }
       ctx.beginPath();
       ctx.arc(point.x, point.y, Math.max(0.45, point.size), 0, Math.PI * 2);
       ctx.fillStyle = "rgba(" + tint + "," + point.alpha + ")";
@@ -188,6 +227,7 @@
     state.running = false;
     if (state.frame) window.cancelAnimationFrame(state.frame);
     state.frame = 0;
+    comet.classList.remove("is-crossing");
   }
 
   createPoints();
@@ -199,7 +239,20 @@
     }, { passive: true });
   }
   window.addEventListener("orbit:chapter", function (event) {
-    state.chapter = Math.max(0, Math.min(4, Number(event.detail.chapter) || 0));
+    var next = Math.max(0, Math.min(4, Number(event.detail.chapter) || 0));
+    if (next === state.chapter) return;
+    var now = performance.now();
+    var progress = transitionProgress(now);
+    points.forEach(function (point) { point.from = formedPoint(point, state.time, progress); });
+    var movingDown = next > state.chapter;
+    state.previousChapter = state.chapter;
+    state.chapter = next;
+    state.transitionStart = now;
+    if (!reduced && !document.hidden && movingDown && window.scrollY > 0) {
+      comet.classList.remove("is-crossing");
+      void comet.offsetWidth;
+      comet.classList.add("is-crossing");
+    }
     if (reduced) draw();
   });
   window.addEventListener("resize", resize, { passive: true });

@@ -4,7 +4,7 @@
 
 Preserve the uploaded draft's dark spatial archive identity, while making the academic identity legible on arrival. The homepage now introduces Zeyang Bai / 白泽阳, the UCAS M.Eng. role and the 3D vision focus before inviting visitors into the research. The orbit is a progressive visual layer; essential content is always in the DOM.
 
-The supplied ZIP is a design/content reference. Its embedded design document was not treated as a new authorization or a source of independently verified academic claims. The content uses the existing homepage and uploaded draft: three public works, four education/research entries, and two academic service entries. Hidden works from the previous homepage remain absent. No CV file, publication metric, new award or new scientific result was invented.
+The supplied ZIP is a design/content reference. Its embedded design document was not treated as a new authorization or a source of independently verified academic claims. The content uses the existing homepage and uploaded draft: four public works, five education/research/industry entries, and two academic service entries. Hidden works from the previous homepage remain absent. No CV file, publication metric, new award or new scientific result was invented.
 
 ## Figma reference
 
@@ -44,7 +44,7 @@ Desktop content shell: maximum 1180 px, with 48 px minimum outer margins; mobile
 
 Edit both language versions in `content.js`. Publication title, authors, URLs, year and categories are shared records; descriptions and roles are localized. Keep status, dates and author order consistent with the source papers when updating them. The Stroke-Seg resource now links to the verified article DOI (10.1049/ipr2.13255), replacing the journal-wide landing page.
 
-The research images now use public original material rather than custom drawings. `assets/papers/sources.json` records versions, origins, original-image hashes and extraction details. Stream3D uses its arXiv v5 first-page teaser; GraphSplat uses the published framework figure indexed by Semantic Scholar. Stroke-Seg's final PDF remains blocked by publisher browser verification, so the current image is the original dataset illustration from the author's BCSS repository and is captioned accordingly. It must not be described as a verified final-paper figure. Research-page captions expose source links; homepage featured cards link to the corresponding research records.
+The research images now use public original material rather than custom drawings. `assets/papers/sources.json` records versions, origins, original-image hashes and extraction details. Stream3D uses its arXiv v5 first-page teaser; GraphSplat uses the published framework figure indexed by Semantic Scholar. Stroke-Seg's final PDF remains blocked by publisher browser verification, so the current image is the original dataset illustration from the author's BCSS repository and is identified accordingly in the provenance file. It must not be described as a verified final-paper figure. Visible image captions are omitted at the user’s request; the provenance JSON retains version and source details. Homepage featured cards link to the corresponding research records.
 
 The homepage academic role line was removed at the user's request; it remains on About.
 
@@ -60,3 +60,10 @@ All three pages reference content-fingerprinted CSS and JavaScript paths under `
 This fixes the observed return-visitor failure where new HTML loaded the old `/styles.css`: the header fell back to normal document flow and an unstyled full-viewport canvas pushed the headline below the fold. A browser test now primes the original CSS/JS URLs with long-lived legacy responses, navigates to the new pages with the same browser cache, and verifies layout, visible headline, language switching and cross-page navigation.
 
 The helper also derives a release identifier from the asset bundle and writes it to each page. Internal navigation carries this identifier in the URL, allowing returning visitors to navigate without reusing older cached HTML pages.
+
+
+## Scroll transitions and content update
+
+On a downward chapter change, one decorative CSS comet crosses the viewport and cleans up after its short animation. Point positions interpolate through a deterministic diffuse state into the next spatial arrangement over 1.35 seconds; enlarged, low-opacity point footprints give a Gaussian-like resolving effect. Below-fold section shells reveal once through a blur/opacity/position transition. Reading, navigation and scrolling remain native; there is no scroll trapping. Comets and content blur are suppressed with reduced motion, including when the preference changes mid-transition. The page-hidden handler cancels animation work.
+
+SeeU is the fourth public research record and is excluded from selected research. Its title, author order, abstract, ECCV 2026 Workshop (3DWM) acceptance and first-page figure were checked against arXiv:2608.22740v1 and the supplied Scholar record. The ByteDance algorithm internship is dated July 2026–present from the user’s instruction, without a guessed team or project description. Tab titles use only the person’s name in the selected language.

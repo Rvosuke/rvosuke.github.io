@@ -600,3 +600,43 @@ html:lang(zh-CN) .hero-copy .lede { max-width: 450px; }
 .research-figure img { background: #fff; object-fit: contain; }
 .research-figure figcaption a { text-underline-offset: 3px; }
 .research-figure figcaption a:hover { color: var(--signal); }
+
+/* Chapter arrivals: diffuse splats resolve into a readable, stable composition. */
+.section-reveal {
+  opacity: .22;
+  filter: blur(12px);
+  transform: translate3d(0, 28px, 0) scale(.985);
+  transition: opacity 1000ms cubic-bezier(.2,.7,.2,1), filter 1100ms cubic-bezier(.2,.7,.2,1), transform 1100ms cubic-bezier(.2,.7,.2,1);
+}
+.section-reveal.is-revealed { opacity: 1; filter: blur(0); transform: none; }
+.chapter-comet {
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  width: clamp(160px, 32vw, 460px);
+  height: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(110vw, -10vh, 0) rotate(-24deg);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #edf6f8 0%, #6de7f2aa 8%, #5d9fff30 45%, transparent 100%);
+}
+.chapter-comet::before { content: ""; position: absolute; left: -2px; top: -2px; width: 6px; height: 6px; border-radius: 50%; background: #edf6f8; box-shadow: 0 0 12px #6de7f2b0, 0 0 30px #5d9fff60; }
+.chapter-comet.is-crossing { animation: chapter-comet 1250ms cubic-bezier(.22,.5,.35,1) both; }
+@keyframes chapter-comet {
+  0% { opacity: 0; transform: translate3d(110vw, 8vh, 0) rotate(-24deg); }
+  10% { opacity: .85; }
+  70% { opacity: .65; }
+  100% { opacity: 0; transform: translate3d(-48vw, 78vh, 0) rotate(-24deg); }
+}
+.record-project { margin: 0 0 12px; color: var(--signal); font-family: var(--mono); font-size: 13px; letter-spacing: .06em; }
+@media (max-width: 760px) {
+  .section-reveal { filter: blur(7px); transform: translate3d(0,20px,0); }
+  .section-reveal.is-revealed { transform: none; }
+  .chapter-comet.is-crossing { animation-duration: 1050ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal { opacity: 1; filter: none; transform: none; transition: none; }
+  .chapter-comet { display: none; animation: none !important; }
+}

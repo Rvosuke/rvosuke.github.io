@@ -2,9 +2,9 @@
 window.ORBIT_CONTENT = {
   "en": {
     "meta": {
-      "homeTitle": "Zeyang Bai — Spatial Intelligence Researcher",
-      "researchTitle": "Research — Zeyang Bai",
-      "aboutTitle": "About — Zeyang Bai",
+      "homeTitle": "Zeyang Bai",
+      "researchTitle": "Zeyang Bai",
+      "aboutTitle": "Zeyang Bai",
       "description": "Zeyang Bai explores 3D reconstruction, generation, world models and spatial intelligence."
     },
     "nav": {
@@ -60,7 +60,7 @@ window.ORBIT_CONTENT = {
       "selectedLead": "From reconstructing sparse observations to generating coherent worlds.",
       "viewResearch": "View all research",
       "trajectoryTitle": "A trajectory through vision and space.",
-      "trajectoryLead": "Study, research and collaboration across four institutions, connected by one evolving question: how can computation acquire a spatial understanding of the world?",
+      "trajectoryLead": "Study, research and algorithm internships across academia and industry, connected by a continuing interest in spatial intelligence.",
       "contactTitle": "Open to the next orbit.",
       "contactBody": "I welcome conversations around 3D vision, spatial intelligence, world models and research collaborations.",
       "emailAction": "Write an email",
@@ -92,13 +92,12 @@ window.ORBIT_CONTENT = {
       "count": "{count} works in the archive",
       "countOne": "1 work in the archive",
       "featured": "Selected work",
-      "authorNote": "Zeyang Bai is highlighted in the author lists.",
-      "imageSource": "Image source"
+      "authorNote": "Zeyang Bai is highlighted in the author lists."
     },
     "about": {
       "kicker": "Personal coordinates",
       "title": "Zeyang Bai.",
-      "intro": "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. I am also a research intern at HKUST with Prof. Fangneng Zhan and at MIT with Kaichen Zhou. Previously, I received my B.Eng. in Artificial Intelligence from Central South University.",
+      "intro": "I am an M.Eng. student at the University of Chinese Academy of Sciences (UCAS), advised by Prof. Jun Xiao. I am also a research intern at HKUST with Prof. Fangneng Zhan and at MIT with Kaichen Zhou. Previously, I received my B.Eng. in Artificial Intelligence from Central South University. Since July 2026, I have also been an algorithm intern at ByteDance.",
       "statementTitle": "Current direction",
       "statement": "My current work focuses on sparse-view 3D Gaussian Splatting, sequential 3D generation, world models and controllable spatial generation. I care about systems that remain coherent as observations accumulate—systems that do not merely render a view, but form a usable memory of space.",
       "timelineTitle": "Trajectory",
@@ -108,6 +107,11 @@ window.ORBIT_CONTENT = {
       "collaborators": "Research connections"
     },
     "timeline": [
+      {
+        "period": "2026.07—Present",
+        "place": "ByteDance",
+        "title": "Algorithm Intern"
+      },
       {
         "period": "2026—Present",
         "place": "MIT",
@@ -141,9 +145,9 @@ window.ORBIT_CONTENT = {
   },
   "zh": {
     "meta": {
-      "homeTitle": "白泽阳 — 空间智能研究者",
-      "researchTitle": "研究 — 白泽阳",
-      "aboutTitle": "关于 — 白泽阳",
+      "homeTitle": "白泽阳",
+      "researchTitle": "白泽阳",
+      "aboutTitle": "白泽阳",
       "description": "白泽阳关注三维重建与生成、世界模型和空间智能。"
     },
     "nav": {
@@ -199,7 +203,7 @@ window.ORBIT_CONTENT = {
       "selectedLead": "从稀疏观测的重建，到连贯三维世界的生成。",
       "viewResearch": "查看全部研究",
       "trajectoryTitle": "一条穿越视觉与空间的轨迹。",
-      "trajectoryLead": "在四所机构中的学习、研究与合作，被同一个持续演化的问题连接：计算系统如何获得对世界的空间理解？",
+      "trajectoryLead": "在学术与产业之间，连接学习、研究与算法实习，持续探索空间智能。",
       "contactTitle": "期待下一条轨道。",
       "contactBody": "欢迎围绕三维视觉、空间智能、世界模型及科研合作展开交流。",
       "emailAction": "发送邮件",
@@ -231,13 +235,12 @@ window.ORBIT_CONTENT = {
       "count": "共 {count} 项研究工作",
       "countOne": "共 1 项研究工作",
       "featured": "代表工作",
-      "authorNote": "作者列表中已加粗标示白泽阳。",
-      "imageSource": "图片来源"
+      "authorNote": "作者列表中已加粗标示白泽阳。"
     },
     "about": {
       "kicker": "个人坐标",
       "title": "白泽阳。",
-      "intro": "我目前在中国科学院大学攻读计算机应用技术硕士学位，师从肖俊教授。同时，我在香港科技大学随占方能教授开展科研实习，并在麻省理工学院与 Kaichen Zhou 合作开展实习。此前，我于中南大学获得人工智能专业工学学士学位。",
+      "intro": "我目前在中国科学院大学攻读计算机应用技术硕士学位，师从肖俊教授。同时，我在香港科技大学随占方能教授开展科研实习，并在麻省理工学院与 Kaichen Zhou 合作开展实习。此前，我于中南大学获得人工智能专业工学学士学位。 自 2026 年 7 月起，我也在字节跳动担任算法实习生。",
       "statementTitle": "当前方向",
       "statement": "我目前关注稀疏视角三维高斯溅射、序列式三维生成、世界模型与可控空间生成。我希望构建随着观测不断累积仍能保持连贯的系统——它们不只是渲染一个视角，而是形成可被使用的空间记忆。",
       "timelineTitle": "经历轨迹",
@@ -247,6 +250,11 @@ window.ORBIT_CONTENT = {
       "collaborators": "研究与合作"
     },
     "timeline": [
+      {
+        "period": "2026.07—至今",
+        "place": "字节跳动 · ByteDance",
+        "title": "算法实习生"
+      },
       {
         "period": "2026—至今",
         "place": "MIT",
@@ -317,15 +325,58 @@ window.ORBIT_CONTENT = {
       "image": "assets/papers/stream3d.webp",
       "imageWidth": 2000,
       "imageHeight": 763,
-      "imageCaption": {
-        "en": "Figure 1 · arXiv v5",
-        "zh": "图 1 · arXiv v5"
-      },
       "imageAlt": {
         "en": "Stream3D Figure 1: streaming input views, SAM3D results and Stream3D reconstructions of a car, statue, tiger and wheelchair.",
         "zh": "Stream3D 图 1：汽车、雕像、老虎与轮椅的流式输入视角、SAM3D 结果及 Stream3D 重建对比。"
+      }
+    },
+    {
+      "id": "seeu",
+      "shortTitle": "SeeU",
+      "displayName": "SeeU",
+      "year": "2026",
+      "category": "reconstruction",
+      "featured": false,
+      "title": "Seeing the Unseen: Semantic-in-Gaussian for Sparse-View 3D Generalization",
+      "authors": "Zeyang Bai, Yunpeng Wang, Yunbiao Wang, Jun Xiao",
+      "venue": {
+        "en": "ECCV 2026 Workshop · 3DWM",
+        "zh": "ECCV 2026 Workshop · 3DWM"
       },
-      "imageSource": "https://arxiv.org/pdf/2605.21472v5"
+      "role": {
+        "en": "First author",
+        "zh": "第一作者"
+      },
+      "contribution": {
+        "en": "SeeU introduces Semantic-in-Gaussian refinement: cross-view entropy-aware embeddings guide a Conditional Gaussian Transformer to recover under-constrained regions. It improves structural completeness and achieves an average 2.44 dB PSNR gain under challenging extrapolation settings.",
+        "zh": "SeeU 提出 Semantic-in-Gaussian 细化框架，通过跨视角熵感知语义嵌入引导条件高斯 Transformer，恢复欠约束区域的结构。在具有挑战性的外推设置下，平均 PSNR 提升 2.44 dB。"
+      },
+      "tags": [
+        "3D Gaussian Splatting",
+        "Semantic conditioning",
+        "Sparse view"
+      ],
+      "links": [
+        {
+          "label": "arXiv",
+          "href": "https://arxiv.org/abs/2608.22740"
+        },
+        {
+          "label": "Paper",
+          "href": "https://arxiv.org/pdf/2608.22740"
+        },
+        {
+          "label": "Google Scholar",
+          "href": "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=0zge9IYAAAAJ&citation_for_view=0zge9IYAAAAJ:O3NaXMp0MMsC"
+        }
+      ],
+      "image": "assets/papers/seeu.webp",
+      "imageWidth": 1388,
+      "imageHeight": 504,
+      "imageAlt": {
+        "en": "SeeU Figure 1: sparse input views and novel-view reconstruction comparisons with pixelSplat, MVSplat and HiSplat, including error maps.",
+        "zh": "SeeU 论文图 1：稀疏输入视角及与 pixelSplat、MVSplat、HiSplat 的新视角重建对比和误差图。"
+      }
     },
     {
       "id": "graphsplat",
@@ -365,15 +416,10 @@ window.ORBIT_CONTENT = {
       "image": "assets/papers/graphsplat.webp",
       "imageWidth": 1388,
       "imageHeight": 410,
-      "imageCaption": {
-        "en": "Figure 2 · Published paper",
-        "zh": "图 2 · 正式发表版"
-      },
       "imageAlt": {
         "en": "GraphSplat Figure 2: adaptive cross-view graph construction, multi-stage hybrid CNN-GNN and novel-view generation.",
         "zh": "GraphSplat 图 2：自适应跨视角图构建、多阶段混合 CNN-GNN 与新视角生成框架。"
-      },
-      "imageSource": "https://www.semanticscholar.org/paper/d4da44a3a6b7b24b3f7186e874187a4c6089c3c1#figures"
+      }
     },
     {
       "id": "stroke-seg",
@@ -413,15 +459,10 @@ window.ORBIT_CONTENT = {
       "image": "assets/papers/stroke-seg.webp",
       "imageWidth": 2000,
       "imageHeight": 649,
-      "imageCaption": {
-        "en": "BCSS dataset · Author repository",
-        "zh": "BCSS 数据集 · 作者仓库原图"
-      },
       "imageAlt": {
         "en": "Original BCSS dataset image from the Stroke-Seg author repository, showing colored stroke annotations across Chinese calligraphy styles.",
         "zh": "Stroke-Seg 作者仓库中的 BCSS 数据集原图，展示多种书写风格汉字的彩色笔画标注。"
-      },
-      "imageSource": "https://github.com/Rvosuke/BCSS/blob/main/assets/dataset.png"
+      }
     }
   ]
 };

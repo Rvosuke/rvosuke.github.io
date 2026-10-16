@@ -89,13 +89,13 @@
       var meta = document.createElement("div");
       meta.className = "featured-meta";
       meta.textContent = item.venue[state.lang] + "\n" + item.role[state.lang];
-      var figure = makeResearchFigure(item, strings);
+      var figure = makeResearchFigure(item);
       link.append(figure, year, main, meta);
       container.appendChild(link);
     });
   }
 
-  function makeResearchFigure(item, strings, linkSource) {
+  function makeResearchFigure(item) {
     var figure = document.createElement("figure");
     figure.className = "research-figure";
     var image = document.createElement("img");
@@ -104,17 +104,7 @@
     image.loading = "lazy";
     image.width = item.imageWidth;
     image.height = item.imageHeight;
-    var caption = document.createElement("figcaption");
-    caption.textContent = item.imageCaption[state.lang];
-    if (linkSource) {
-      var source = document.createElement("a");
-      source.href = item.imageSource;
-      source.target = "_blank";
-      source.rel = "noopener noreferrer";
-      source.textContent = strings.research.imageSource;
-      caption.append(document.createTextNode(" · "), source);
-    }
-    figure.append(image, caption);
+    figure.appendChild(image);
     return figure;
   }
 
@@ -140,8 +130,8 @@
         var title = document.createElement("h3");
         title.textContent = item.title;
         var body = document.createElement("p");
-        body.textContent = item.body;
-        copy.append(place, title, body);
+        copy.append(place, title);
+        if (item.body) { body.textContent = item.body; copy.appendChild(body); }
         row.append(period, axis, copy);
         container.appendChild(row);
       });
@@ -208,6 +198,12 @@
       var title = document.createElement("h2");
       title.className = "record-title";
       title.textContent = item.title;
+      if (item.displayName) {
+        var project = document.createElement("p");
+        project.className = "record-project";
+        project.textContent = item.displayName;
+        main.appendChild(project);
+      }
       var authors = document.createElement("p");
       authors.className = "record-authors";
       item.authors.split("Zeyang Bai").forEach(function (part, index) {
@@ -252,7 +248,7 @@
       });
       linkGroup.append(linkLabel, links);
       side.append(contributionGroup, linkGroup);
-      record.append(year, makeResearchFigure(item, strings, true), main, side);
+      record.append(year, makeResearchFigure(item), main, side);
       list.appendChild(record);
     });
     var empty = document.querySelector("[data-research-empty]");
@@ -420,6 +416,33 @@
     });
   }
 
+  function setupReveals() {
+    if (page !== "home" || !("IntersectionObserver" in window)) return;
+    var preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var targets = document.querySelectorAll(".home-chapter:not(.hero) .section-shell");
+    var observer;
+    function configure() {
+      if (observer) observer.disconnect();
+      targets.forEach(function (target) { target.classList.remove("section-reveal", "is-revealed"); });
+      if (preference.matches) return;
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: "0px 0px -12% 0px" });
+      targets.forEach(function (target) {
+        if (target.getBoundingClientRect().top > window.innerHeight * 0.88) {
+          target.classList.add("section-reveal");
+          observer.observe(target);
+        }
+      });
+    }
+    configure();
+    preference.addEventListener("change", configure);
+  }
+
   function setupTracking() {
     document.addEventListener("click", function (event) {
       var target = event.target.closest("[data-track]");
@@ -435,4 +458,5 @@
   setupMagnetic();
   setupTracking();
   applyLanguage(state.lang);
+  setupReveals();
 }());
