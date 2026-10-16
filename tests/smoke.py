@@ -112,7 +112,7 @@ def run():
                         assert page.locator('.service-list li').count() == 4
                         assert 'Pattern Recognition' in page.locator('.service-list').inner_text()
                         assert 'MultiMedia Modeling 2027' in page.locator('.service-list').inner_text()
-                        assert page.locator('.service-list a[href="https://mmm2027.net/"]').inner_text() == 'MultiMedia Modeling 2027'
+                        assert page.locator('.service-list a').count() == 0
                     cases += 1
         print(f'PASS {cases} responsive page/language combinations (320–1440 px)')
 

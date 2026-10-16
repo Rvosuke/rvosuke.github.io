@@ -136,7 +136,7 @@ window.ORBIT_CONTENT = {
     "service": [
       "Reviewer · Pacific Graphics 2026",
       "Reviewer · Pattern Recognition",
-      { "role": "Reviewer", "name": "MultiMedia Modeling 2027", "href": "https://mmm2027.net/" },
+      "Reviewer · MultiMedia Modeling 2027",
       "Organizer · NeurIPS 2026 Workshop: Physical World Model"
     ],
     "footer": "© 2026 Zeyang Bai. Built as a spatial archive."
@@ -277,7 +277,7 @@ window.ORBIT_CONTENT = {
     "service": [
       "审稿人 · Pacific Graphics 2026",
       "审稿人 · Pattern Recognition",
-      { "role": "审稿人", "name": "MultiMedia Modeling 2027", "href": "https://mmm2027.net/" },
+      "审稿人 · MultiMedia Modeling 2027",
       "组织者 · NeurIPS 2026 Workshop: Physical World Model"
     ],
     "footer": "© 2026 白泽阳。一个持续生长的空间档案。"
