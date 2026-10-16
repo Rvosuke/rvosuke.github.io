@@ -1,0 +1,53 @@
+# Orbit Archive · Design handoff
+
+## Direction
+
+Preserve the uploaded draft's dark spatial archive identity, while making the academic identity legible on arrival. The homepage now introduces Zeyang Bai / 白泽阳, the UCAS M.Eng. role and the 3D vision focus before inviting visitors into the research. The orbit is a progressive visual layer; essential content is always in the DOM.
+
+The supplied ZIP is a design/content reference. Its embedded design document was not treated as a new authorization or a source of independently verified academic claims. The content uses the existing homepage and uploaded draft: three public works, four education/research entries, and two academic service entries. Hidden works from the previous homepage remain absent. No CV file, publication metric, new award or new scientific result was invented.
+
+## Figma reference
+
+No Figma file was inspected or updated: the Figma connector was unavailable. These notes and CSS variables provide the implementation reference for a subsequent Figma pass. A shared file/frame link is sufficient to establish a concrete Figma reference once the connector is available.
+
+Suggested review frames: desktop 1440 px, tablet 768 / 1024 px, mobile 390 px, narrow mobile 320 px. Review both English and Chinese; Chinese headings use a separate line-height and tracking rule.
+
+## Tokens
+
+| Role | CSS variable | Value |
+| --- | --- | --- |
+| Background | `--void` | `#05070A` |
+| Surface | `--carbon` | `#0B1015` |
+| Accent / action | `--signal` | `#6DE7F2` |
+| Secondary accent | `--spectral` | `#5D9FFF` |
+| Primary text | `--paper` | `#EDF6F8` |
+| Secondary text | `--muted` | `#A1B0B9` |
+| Metadata | `--dim` | `#81939F` |
+| Divider | `--line` | `rgba(172,209,220,.18)` |
+| Strong divider | `--line-strong` | `rgba(172,224,235,.34)` |
+
+The font stacks resolve locally, without remote requests. Display: Space Grotesk when installed, Avenir Next / Segoe UI fallback; body: IBM Plex Sans when installed, Segoe UI fallback; Chinese: PingFang SC / Microsoft YaHei; metadata: IBM Plex Mono when installed, Consolas / monospace. The application does not download these fonts.
+
+Desktop content shell: maximum 1180 px, with 48 px minimum outer margins; mobile margins: 18 px. Core spacing follows 8 px increments, with 24 / 32 px content gaps and 70–130 px section spacing. Navigation and filter controls have a minimum 44 px height.
+
+## Components and behavior
+
+- **Header:** orbit mark, identity, current-page navigation, language switch. At 760 px and below, the menu becomes an overlay with focus containment, Escape dismissal, background inertness, scroll lock and focus restoration.
+- **Hero:** two-line research thesis, explicit academic role, primary research action, About link, institution context and orbit caption. No unsupported location coordinates are displayed.
+- **Point field:** deterministic projected points, pointer response, chapter-specific shapes and a 30 fps limit. Pauses when hidden, adapts density after resizing, responds to live motion preference changes, and falls back to CSS orbits if Canvas is unavailable.
+- **Featured research:** short project name, full subtitle, paper image, contribution, venue and author role. Links target the corresponding full publication record.
+- **Research archive:** full titles/authors, highlighted Zeyang Bai, contribution, venue and original resource URLs. Filters persist in the URL and retain keyboard focus; the count is announced by a polite status region.
+- **About:** unaltered source portrait, biography, collaborator links, timeline, service and direct contact. No CV action is offered without a real CV file.
+- **Chapter rail:** keyboard-accessible section links and active chapter state; hidden on narrow screens.
+
+## Content maintenance
+
+Edit both language versions in `content.js`. Publication title, authors, URLs, year and categories are shared records; descriptions and roles are localized. Keep status, dates and author order consistent with the source papers when updating them. The Stroke-Seg resource now links to the verified article DOI (10.1049/ipr2.13255), replacing the journal-wide landing page.
+
+The research images now use public original material rather than custom drawings. `assets/papers/sources.json` records versions, origins, original-image hashes and extraction details. Stream3D uses its arXiv v5 first-page teaser; GraphSplat uses the published framework figure indexed by Semantic Scholar. Stroke-Seg's final PDF remains blocked by publisher browser verification, so the current image is the original dataset illustration from the author's BCSS repository and is captioned accordingly. It must not be described as a verified final-paper figure. Research-page captions expose source links; homepage featured cards link to the corresponding research records.
+
+The homepage academic role line was removed at the user's request; it remains on About.
+
+## Validation
+
+Run `python3 tests/smoke.py` for the responsive and interaction regression suite. The site has no runtime network dependencies. External publication/advisor links remain the supplied links; successful local validation does not establish that those remote destinations are reachable.

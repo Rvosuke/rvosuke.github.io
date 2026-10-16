@@ -1,0 +1,35 @@
+{
+  "checked_on": "2026-10-16",
+  "stream3d": {
+    "file": "stream3d.webp",
+    "kind": "paper_figure",
+    "version": "arXiv:2605.21472v5, revised 2026-08-04",
+    "figure": "Figure 1, page 1",
+    "paper": "https://arxiv.org/abs/2605.21472v5",
+    "source": "https://arxiv.org/pdf/2605.21472v5",
+    "extraction": "Extracted the embedded raster image at PDF xref 665; resized proportionally to 2000px wide and encoded as lossless WebP.",
+    "original_image_sha256": "c34604142458d70f9dc50b31e2690c30015220209d876e88a479a5ee37b67551"
+  },
+  "graphsplat": {
+    "file": "graphsplat.webp",
+    "kind": "paper_figure",
+    "version": "ACM published paper, DOI 10.1145/3746027.3755481",
+    "figure": "Figure 2, framework",
+    "paper": "https://doi.org/10.1145/3746027.3755481",
+    "source": "https://figures.semanticscholar.org/d4da44a3a6b7b24b3f7186e874187a4c6089c3c1/3-Figure2-1.png",
+    "metadata_source": "https://www.semanticscholar.org/api/1/paper/d4da44a3a6b7b24b3f7186e874187a4c6089c3c1",
+    "extraction": "Original published-paper figure extracted by Semantic Scholar; matched its title, DOI, figure number and caption. Encoded as lossless WebP without cropping. Direct publisher PDF access is blocked by a browser-verification page.",
+    "original_image_sha256": "d59485b9ec5f3fa5c681ded3f740e8296cbd54a9d31a9b430ccfa0d180cd287e"
+  },
+  "stroke-seg": {
+    "file": "stroke-seg.webp",
+    "kind": "author_repository_image",
+    "version": "Current public BCSS author repository image; not verified as a figure from the latest article PDF",
+    "paper": "https://doi.org/10.1049/ipr2.13255",
+    "source": "https://raw.githubusercontent.com/Rvosuke/BCSS/main/assets/dataset.png",
+    "repository": "https://github.com/Rvosuke/BCSS",
+    "extraction": "Original dataset illustration from the author's paper-linked repository, resized proportionally to 2000px wide and encoded as lossless WebP. The publisher's article/PDF routes return HTTP 403 browser verification. This image is explicitly captioned as an author-repository image, not as an extracted final-paper figure.",
+    "original_image_sha256": "1b0b9b773c18e1d910c1f5338d843af609ab3a672f56e477cec48acef46b1adb",
+    "pending": "Replace with the final-paper teaser if an accessible publisher PDF or author-supplied PDF becomes available."
+  }
+}

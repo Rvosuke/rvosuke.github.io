@@ -1,77 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Bai Zeyang (Rvosuke) academic homepage.">
-  <title>Bai Zeyang | Academic Homepage</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070a">
+  <meta name="description" content="Zeyang Bai explores 3D reconstruction, generation, world models and spatial intelligence.">
+  <title>Zeyang Bai — Spatial Intelligence Researcher</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%236de7f2' stroke-width='3'/%3E%3Cellipse cx='32' cy='32' rx='28' ry='11' fill='none' stroke='%235d9fff' stroke-width='2' transform='rotate(-28 32 32)'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23edf6f8'/%3E%3C/svg%3E">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-container">
-    <aside class="sidebar">
-      <div class="sidebar-sticky">
-        <div class="profile-card animate-on-scroll">
-          <div class="profile-photo-wrapper">
-            <img src="./assets/证件照.png" alt="Profile Photo" class="profile-photo" onerror="this.style.display='none'">
-          </div>
-          <h1 id="name" class="name-title"></h1>
-          <img src="./assets/白泽阳-签名.png" alt="Signature" class="signature-img" onerror="this.style.display='none'">
-          <p id="tagline" class="tagline"></p>
-        </div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Zeyang Bai home"><span class="brand-orbit" aria-hidden="true"></span><span data-i18n="common.name">Zeyang Bai</span></a>
+    <button class="menu-toggle" type="button" data-menu-toggle aria-controls="primary-navigation" aria-expanded="false"><span class="sr-only" data-i18n="common.menu">Open navigation</span><span></span><span></span></button>
+    <nav id="primary-navigation" class="site-nav" data-nav aria-label="Primary navigation">
+      <a class="is-active" aria-current="page" href="index.html" data-i18n="nav.home">Index</a>
+      <a href="research.html" data-i18n="nav.research">Research</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <button class="language-switch" type="button" data-language-switch data-i18n="nav.language">中文</button>
+    </nav>
+  </header>
 
-        <div class="contact-section animate-on-scroll" style="animation-delay: 0.1s">
-          <p id="contact-message" class="contact-msg hidden"></p>
-          <div id="contact-list" class="contact-list"></div>
-        </div>
+  <main id="main">
+    <div class="spatial-stage" aria-hidden="true">
+      <canvas id="orbit-canvas"></canvas>
+      <div class="orbit-fallback"><span></span><span></span><span></span></div>
+    </div>
 
-        <div class="lang-controls animate-on-scroll" role="group" aria-label="Language switcher" style="animation-delay: 0.2s">
-          <button type="button" data-lang="en" id="lang-en" class="lang-btn">EN</button>
-          <button type="button" data-lang="zh" id="lang-zh" class="lang-btn">中文</button>
-        </div>
-      </div>
+    <aside class="chapter-rail" aria-label="Page chapters">
+      <span class="chapter-progress" data-chapter-progress></span>
+      <ol data-chapter-list></ol>
     </aside>
 
-    <main class="content">
-      <section class="section animate-on-scroll" id="about-section">
-        <h2 id="about-title" class="section-title"></h2>
-        <p id="about-text" class="section-text"></p>
-      </section>
+    <section class="home-chapter hero" id="arrival" data-chapter="0">
+      <div class="section-shell hero-copy">
+        <p class="kicker hero-identity"><span class="status-dot" aria-hidden="true"></span><span data-i18n="home.identity">Zeyang Bai / 白泽阳</span></p>
+        <h1><span data-i18n="home.heroLine1">Sparse views.</span><span class="hero-title-accent" data-i18n="home.heroLine2">Spatial worlds.</span></h1>
+        <p class="lede" data-i18n="home.heroLead">I explore how machines reconstruct from sparse observations and generate coherent 3D worlds.</p>
+        <div class="hero-actions">
+          <a class="primary-action magnetic" href="#selected-research"><span data-i18n="home.enter">Explore my research</span><span aria-hidden="true">↗</span></a>
+          <a class="text-action" href="about.html"><span data-i18n="home.aboutAction">A little about me</span><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h23M19 1l5 5-5 5"/></svg></a>
+        </div>
+        <div class="hero-affiliations"><span data-i18n="home.affiliationLabel">Research across</span><span>UCAS</span><span>HKUST</span><span>MIT</span></div>
+      </div>
+      <div class="scene-caption" aria-hidden="true"><span class="scene-label">FIG. 01 / <span data-i18n="home.sceneTitle">A field of possibilities</span></span><span class="scene-instruction" data-i18n="home.sceneHint">Move to shift perspective</span></div>
+      <div class="hero-index"><span data-i18n="home.heroKicker">Spatial intelligence / 3D vision</span><a href="#signal"><span data-i18n="home.scroll">Scroll to discover</span><span aria-hidden="true"> ↓</span></a><span>ORBIT ARCHIVE / 2026</span></div>
+    </section>
 
-      <section class="section animate-on-scroll" id="interests-section">
-        <h2 id="interests-title" class="section-title"></h2>
-        <ul id="interests-list" class="styled-list"></ul>
-      </section>
+    <section class="home-chapter signal-section" id="signal" data-chapter="1">
+      <div class="section-shell split-heading">
+        <p class="section-number">01</p>
+        <div><h2 data-i18n="home.signalTitle">Three questions shape my practice.</h2><div class="signal-list" data-signal-list></div></div>
+      </div>
+    </section>
 
-      <section class="section animate-on-scroll" id="publications-section">
-        <h2 id="publications-title" class="section-title"></h2>
-        <ul id="publications-list" class="styled-list boxed-list" style="gap: 24px;"></ul>
-      </section>
+    <section class="home-chapter research-section" id="selected-research" data-chapter="2">
+      <div class="section-shell">
+        <div class="section-intro"><p class="section-number">02</p><div><h2 data-i18n="home.selectedTitle">Selected research</h2><p data-i18n="home.selectedLead">From reconstructing sparse observations to generating coherent worlds.</p></div></div>
+        <div class="featured-research" data-featured-research></div>
+        <a class="text-action" href="research.html"><span data-i18n="home.viewResearch">View all research</span><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h23M19 1l5 5-5 5"/></svg></a>
+      </div>
+    </section>
 
-      <section class="section animate-on-scroll" id="projects-section">
-        <h2 id="projects-title" class="section-title"></h2>
-        <ul id="projects-list" class="styled-list highlight-list"></ul>
-      </section>
+    <section class="home-chapter trajectory-section" id="trajectory" data-chapter="3">
+      <div class="section-shell">
+        <div class="section-intro"><p class="section-number">03</p><div><h2 data-i18n="home.trajectoryTitle">A trajectory through vision and space.</h2><p data-i18n="home.trajectoryLead">Study, research and collaboration across four institutions.</p></div></div>
+        <div class="trajectory" data-timeline></div>
+      </div>
+    </section>
 
-      <section class="section animate-on-scroll" id="education-section">
-        <h2 id="education-title" class="section-title"></h2>
-        <ul id="education-list" class="styled-list"></ul>
-      </section>
+    <section class="home-chapter contact-section" id="contact" data-chapter="4">
+      <div class="section-shell contact-shell">
+        <p class="section-number">04</p>
+        <h2 data-i18n="home.contactTitle">Open to the next orbit.</h2>
+        <p data-i18n="home.contactBody">I welcome conversations around 3D vision, spatial intelligence, world models and research collaborations.</p>
+        <div class="contact-actions">
+          <a class="primary-action magnetic" href="mailto:zeyangbai.rvo@gmail.com" data-track="email"><span data-i18n="home.emailAction">Write an email</span></a>
+          <a class="text-action" href="https://github.com/Rvosuke" target="_blank" rel="noopener noreferrer" data-track="github"><span data-i18n="home.githubAction">Visit GitHub</span><svg viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6h23M19 1l5 5-5 5"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      <section class="section animate-on-scroll" id="service-section">
-        <h2 id="service-title" class="section-title"></h2>
-        <ul id="service-list" class="styled-list"></ul>
-      </section>
-
-      <footer class="footer animate-on-scroll">
-        <p id="footer-text"></p>
-      </footer>
-    </main>
-  </div>
-  <script src="content.js"></script>
+  <footer class="site-footer"><span data-i18n="footer">© 2026 Zeyang Bai. Built as a spatial archive.</span><a href="#main" data-i18n="common.top">Back to top</a></footer>
+  <noscript><div class="noscript-note">Zeyang Bai · 白泽阳 — M.Eng. student at UCAS, researching 3D reconstruction and generation. Enable JavaScript for the bilingual research archive. Contact: <a href="mailto:zeyangbai.rvo@gmail.com">zeyangbai.rvo@gmail.com</a>.</div></noscript>
+  <script src="content.js"></script><script src="site.js"></script><script src="orbit.js"></script>
 </body>
 </html>
