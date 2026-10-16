@@ -99,6 +99,7 @@ def run():
                     no_overflow(page)
                     if name == 'index':
                         assert page.locator('.hero-role').count() == 0
+                        assert page.locator('[data-i18n="home.trajectoryLead"]').count() == 0
                         assert page.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
                         assert page.locator('h1').evaluate('(el) => el.getBoundingClientRect().bottom <= innerHeight')
                     if name == 'research':
@@ -108,7 +109,9 @@ def run():
                         assert page.locator('.trajectory-item').count() == 5
                         assert 'ByteDance' in page.locator('.trajectory-item').first.inner_text()
                         assert '2026.07' in page.locator('.trajectory-item').first.inner_text()
-                        assert page.locator('.service-list li').count() == 2
+                        assert page.locator('.service-list li').count() == 4
+                        assert 'Pattern Recognition' in page.locator('.service-list').inner_text()
+                        assert 'MMM' in page.locator('.service-list').inner_text()
                     cases += 1
         print(f'PASS {cases} responsive page/language combinations (320–1440 px)')
 
@@ -120,12 +123,12 @@ def run():
             assert f'filter={category}' in page.url
             assert page.locator(f'[data-filter="{category}"]').evaluate('(el) => el === document.activeElement')
             assert page.locator(f'[data-filter="{category}"]').get_attribute('aria-pressed') == 'true'
-            assert str(len(record_ids)) in page.locator('[data-research-summary]').inner_text()
+            assert page.locator('[data-research-summary]').count() == 0
         page.reload()
         assert page.locator('.research-record').count() == 1
         page.locator('[data-language-switch]').click()
         assert page.locator('.research-record').get_attribute('id') == 'stroke-seg'
-        assert '共 1' in page.locator('[data-research-summary]').inner_text()
+        assert page.locator('[data-research-summary]').count() == 0
         page.locator('[data-filter="all"]').click()
         assert page.locator('.research-record').count() == 4
         assert page.locator('.research-figure figcaption').count() == 0

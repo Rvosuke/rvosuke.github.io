@@ -253,8 +253,6 @@
     });
     var empty = document.querySelector("[data-research-empty]");
     if (empty) empty.hidden = visible.length !== 0;
-    var summary = document.querySelector("[data-research-summary]");
-    if (summary) summary.textContent = (visible.length === 1 ? strings.research.countOne : strings.research.count).replace("{count}", visible.length) + " · " + strings.research.authorNote;
   }
 
   function renderChapterRail(strings) {

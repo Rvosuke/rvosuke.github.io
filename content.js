@@ -60,7 +60,6 @@ window.ORBIT_CONTENT = {
       "selectedLead": "From reconstructing sparse observations to generating coherent worlds.",
       "viewResearch": "View all research",
       "trajectoryTitle": "A trajectory through vision and space.",
-      "trajectoryLead": "Study, research and algorithm internships across academia and industry, connected by a continuing interest in spatial intelligence.",
       "contactTitle": "Open to the next orbit.",
       "contactBody": "I welcome conversations around 3D vision, spatial intelligence, world models and research collaborations.",
       "emailAction": "Write an email",
@@ -89,10 +88,7 @@ window.ORBIT_CONTENT = {
       "links": "Resources",
       "empty": "No research items match this filter.",
       "back": "Return to index",
-      "count": "{count} works in the archive",
-      "countOne": "1 work in the archive",
-      "featured": "Selected work",
-      "authorNote": "Zeyang Bai is highlighted in the author lists."
+      "featured": "Selected work"
     },
     "about": {
       "kicker": "Personal coordinates",
@@ -139,6 +135,8 @@ window.ORBIT_CONTENT = {
     ],
     "service": [
       "Reviewer · Pacific Graphics 2026",
+      "Reviewer · Pattern Recognition",
+      "Reviewer · MMM",
       "Organizer · NeurIPS 2026 Workshop: Physical World Model"
     ],
     "footer": "© 2026 Zeyang Bai. Built as a spatial archive."
@@ -203,7 +201,6 @@ window.ORBIT_CONTENT = {
       "selectedLead": "从稀疏观测的重建，到连贯三维世界的生成。",
       "viewResearch": "查看全部研究",
       "trajectoryTitle": "一条穿越视觉与空间的轨迹。",
-      "trajectoryLead": "在学术与产业之间，连接学习、研究与算法实习，持续探索空间智能。",
       "contactTitle": "期待下一条轨道。",
       "contactBody": "欢迎围绕三维视觉、空间智能、世界模型及科研合作展开交流。",
       "emailAction": "发送邮件",
@@ -232,10 +229,7 @@ window.ORBIT_CONTENT = {
       "links": "相关资源",
       "empty": "当前筛选条件下没有研究项目。",
       "back": "返回首页",
-      "count": "共 {count} 项研究工作",
-      "countOne": "共 1 项研究工作",
-      "featured": "代表工作",
-      "authorNote": "作者列表中已加粗标示白泽阳。"
+      "featured": "代表工作"
     },
     "about": {
       "kicker": "个人坐标",
@@ -282,6 +276,8 @@ window.ORBIT_CONTENT = {
     ],
     "service": [
       "审稿人 · Pacific Graphics 2026",
+      "审稿人 · Pattern Recognition",
+      "审稿人 · MMM",
       "组织者 · NeurIPS 2026 Workshop: Physical World Model"
     ],
     "footer": "© 2026 白泽阳。一个持续生长的空间档案。"
