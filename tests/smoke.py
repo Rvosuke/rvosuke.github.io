@@ -11,7 +11,7 @@ import shutil
 import subprocess
 import sys
 import threading
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from playwright.sync_api import sync_playwright
 
@@ -29,7 +29,7 @@ class LegacyCacheHandler(QuietHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
-        if path == '/legacy-cache':
+        if path == '/legacy-cache' or (path in ('/research.html', '/about.html') and 'v' not in parse_qs(urlsplit(self.path).query)):
             body = b'''<!doctype html><title>Warm legacy cache</title>
               <link rel="stylesheet" href="/styles.css">
               <script src="/content.js"></script><script src="/site.js"></script>
@@ -184,6 +184,9 @@ def run():
         page.wait_for_timeout(150)
         assert image_a != page.locator('#orbit-canvas').evaluate('(c) => c.toDataURL()')
         page.emulate_media(reduced_motion='reduce')
+        # Chromium dispatches media-query change listeners during rendering;
+        # wait until that handler has stopped the animation before sampling.
+        page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
         still = page.locator('#orbit-canvas').evaluate('(c) => c.toDataURL()')
         page.wait_for_timeout(150)
         assert still == page.locator('#orbit-canvas').evaluate('(c) => c.toDataURL()')
@@ -209,6 +212,9 @@ def run():
             assert cached.evaluate('window.legacyCachedAsset === true')
             assert cached.locator('body').evaluate('(el) => getComputedStyle(el).backgroundColor') == 'rgb(15, 23, 42)'
             assert LegacyCacheHandler.legacy_requests == 4
+            for old_page in ('research.html', 'about.html'):
+                cached.goto(cached_base + '/' + old_page + '?lang=zh', wait_until='networkidle')
+                assert cached.title() == 'Warm legacy cache'
             cached.goto(cached_base + '/index.html?lang=en', wait_until='networkidle')
             assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
             assert cached.locator('.skip-link').evaluate('(el) => el.getBoundingClientRect().bottom <= 0')
@@ -219,6 +225,7 @@ def run():
             cached.locator('[data-language-switch]').click()
             assert cached.locator('.hero-title-accent').inner_text() == '到三维世界。'
             cached.locator('.site-nav a[href*="research.html"]').click()
+            assert parse_qs(urlsplit(cached.url).query)['v'][0] == cached.locator('html').get_attribute('data-release')
             assert cached.locator('.research-record').count() == 3
             assert cached.locator('.site-header').evaluate('(el) => getComputedStyle(el).position') == 'fixed'
             cached.locator('.site-nav a[href*="about.html"]').click()

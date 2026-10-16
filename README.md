@@ -20,7 +20,7 @@ Use the existing checkout in a cloud task; no separate worktree is needed. The s
 - `site.js`: language preferences, navigation, filters and chapter state.
 - `orbit.js`: progressive Canvas enhancement with static CSS and reduced-motion fallbacks.
 - `styles.css`: shared design tokens, responsive layouts and interaction states.
-- `scripts/prepare_assets.py`: generates content-fingerprinted copies under `assets/site/` and updates all three HTML pages. Run it after CSS/JS edits and before publishing. Keep previous fingerprinted files so cached HTML retains working asset URLs.
+- `scripts/prepare_assets.py`: generates content-fingerprinted copies under `assets/site/` and updates all three HTML pages with matching references and a release identifier for internal navigation. Run it after CSS/JS edits and before publishing. Keep previous fingerprinted files so cached HTML retains working asset URLs.
 
 English and Chinese can be selected using `?lang=en` / `?lang=zh`. The choice persists locally and carries across pages. Research filters are recorded in `?filter=generation`, `reconstruction` or `vision`.
 

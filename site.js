@@ -31,6 +31,7 @@
         var url = new URL(link.getAttribute("href"), window.location.href);
         if (url.origin !== window.location.origin && window.location.protocol !== "file:") return;
         url.searchParams.set("lang", state.lang);
+        if (root.dataset.release) url.searchParams.set("v", root.dataset.release);
         link.setAttribute("href", url.pathname.split("/").pop() + "?" + url.searchParams.toString() + url.hash);
       } catch (error) { /* keep original link */ }
     });

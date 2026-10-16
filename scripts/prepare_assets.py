@@ -28,9 +28,13 @@ def prepare(check=False):
         else:
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_bytes(data)
+    release = hashlib.sha256('\n'.join(references.values()).encode()).hexdigest()[:12]
     for name in PAGES:
         original = (ROOT / name).read_text()
-        updated = original
+        if 'data-release="' in original:
+            updated = re.sub(r'data-release="[^"]*"', 'data-release="' + release + '"', original, count=1)
+        else:
+            updated = original.replace('<html ', '<html data-release="' + release + '" ', 1)
         for source, target in references.items():
             path = Path(source)
             pattern = r'(?P<attribute>(?:src|href)=")' + r'(?:assets/site/)?' + re.escape(path.stem) + r'(?:\.[0-9a-f]{12})?' + re.escape(path.suffix) + r'"'
